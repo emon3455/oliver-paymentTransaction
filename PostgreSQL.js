@@ -70,8 +70,8 @@ class PostgreSQL {
                 default: {
                 host: process.env.PGHOST || "postgres",
                     database: process.env.POSTGRES_DB || "oliver_db",
-                    user: process.env.POSTGRES_USER || "leuel",
-                    password: process.env.POSTGRES_PASSWORD || "LeuelAsfaw123",
+                    user: process.env.POSTGRES_USER || "emon",
+                    password: process.env.POSTGRES_PASSWORD || "emon@12",
                     ssl: PostgreSQL.parseSslOptions(),
                 },
             },
@@ -106,10 +106,10 @@ class PostgreSQL {
 
         this.defaultConfig = Object.assign(
             {
-                user: process.env.POSTGRES_USER || "leuel",
+                user: process.env.POSTGRES_USER || "emon",
                 host: process.env.PGHOST || "postgres",
                 database: process.env.POSTGRES_DB || "oliver_db",
-                password: process.env.POSTGRES_PASSWORD || "LeuelAsfaw123",
+                password: process.env.POSTGRES_PASSWORD || "emon@12",
                 port: parseInt(process.env.PGPORT, 10) || 5432,
                 ssl: PostgreSQL.parseSslOptions(),
                 max: parseInt(process.env.PG_MAX_CLIENTS || "10", 10),
@@ -529,7 +529,14 @@ class PostgreSQL {
             cols.forEach((value) => PostgreSQL._assertValidIdentifiers(value));
             PostgreSQL._enforceColumnWhitelist(table, cols);
 
-            const values = Object.values(data);
+            // Convert objects/arrays to JSON strings for JSONB columns
+            const values = Object.values(data).map(value => {
+                if (value !== null && typeof value === 'object') {
+                    return JSON.stringify(value);
+                }
+                return value;
+            });
+            
             PostgreSQL._validateQueryValues(values, contextDetail);
             const placeholders = cols.map((_, i) => `$${i + 1}`);
             const colList = cols.map((value) => PostgreSQL._quoteSqlIdentifier(value)).join(", ");
@@ -724,22 +731,13 @@ class PostgreSQL {
         const prev = client.__dbSessionTimeouts || {};
 
         if (prev.statementTimeoutMs !== next.statementTimeoutMs) {
-            await client.query({
-                text: "SET statement_timeout = $1",
-                values: [next.statementTimeoutMs],
-            });
+            await client.query(`SET statement_timeout = ${next.statementTimeoutMs}`);
         }
         if (prev.lockTimeoutMs !== next.lockTimeoutMs) {
-            await client.query({
-                text: "SET lock_timeout = $1",
-                values: [next.lockTimeoutMs],
-            });
+            await client.query(`SET lock_timeout = ${next.lockTimeoutMs}`);
         }
         if (prev.idleInTransactionSessionTimeoutMs !== next.idleInTransactionSessionTimeoutMs) {
-            await client.query({
-                text: "SET idle_in_transaction_session_timeout = $1",
-                values: [next.idleInTransactionSessionTimeoutMs],
-            });
+            await client.query(`SET idle_in_transaction_session_timeout = ${next.idleInTransactionSessionTimeoutMs}`);
         }
 
         client.__dbSessionTimeouts = next;
@@ -1053,11 +1051,9 @@ class PostgreSQL {
                 console.warn(`Nested transaction detected on connection "${name}" (depth ${currentDepth}); using savepoint ${savepointName}.`);
                 await client.query(`SAVEPOINT ${savepointName}`);
             }
-            await client.query("SET LOCAL statement_timeout = $1", [Math.max(0, Math.trunc(this.defaultQueryTimeoutMs))]);
-            await client.query("SET LOCAL lock_timeout = $1", [Math.max(0, Math.trunc(this.defaultLockTimeoutMs))]);
-            await client.query("SET LOCAL idle_in_transaction_session_timeout = $1", [
-                Math.max(0, Math.trunc(this.defaultIdleInTransactionSessionTimeoutMs)),
-            ]);
+            await client.query(`SET LOCAL statement_timeout = ${Math.max(0, Math.trunc(this.defaultQueryTimeoutMs))}`);
+            await client.query(`SET LOCAL lock_timeout = ${Math.max(0, Math.trunc(this.defaultLockTimeoutMs))}`);
+            await client.query(`SET LOCAL idle_in_transaction_session_timeout = ${Math.max(0, Math.trunc(this.defaultIdleInTransactionSessionTimeoutMs))}`);
             const result = await work({
                 query: (text, params = [], options = {}) =>
                     client.query({

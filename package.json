@@ -1,0 +1,23 @@
+{
+  "name": "payment-transactions-registry-store",
+  "version": "1.0.0",
+  "description": "Payment Transactions Registry Store with PostgreSQL backend",
+  "main": "PaymentTransactionsRegistryStore.js",
+  "scripts": {
+    "test": "node test/crud-test.js"
+  },
+  "keywords": [
+    "payment",
+    "transactions",
+    "registry",
+    "postgresql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1",
+    "luxon": "^3.4.4"
+  },
+  "devDependencies": {}
+}

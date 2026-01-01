@@ -1,11 +1,11 @@
-import crypto from "crypto";
-import SafeUtils from "./SafeUtils.js";
-import ErrorHandler from "./ErrorHandler.js";
-import Logger from "./Logger.js";
-import DateTime from "./DateTime.js";
-import PostgreSQL from "./PostgreSQL.js";
+const crypto = require("crypto");
+const SafeUtils = require("./SafeUtils");
+const ErrorHandler = require("./ErrorHandler");
+const Logger = require("./Logger");
+const DateTime = require("./DateTime");
+const PostgreSQL = require("./PostgreSQL");
 
-export default class TransactionRegistry {
+class TransactionRegistry {
   static _db = null;
 
   static TRANSACTION_DIRECTIONS = Object.freeze([
@@ -280,7 +280,7 @@ export default class TransactionRegistry {
       ({
         transaction_id: sanitizedTransactionId,
       } = SafeUtils.sanitizeValidate({
-        transaction_id: { value: transaction_id, type: "string", required: true },
+        transaction_id: { value: String(transaction_id), type: "string", required: true },
       }));
 
       if (!SafeUtils.isPlainObject(fields)) {
@@ -507,7 +507,14 @@ export default class TransactionRegistry {
           const setClause = updateKeys
             .map((key, index) => `"${key}"=$${index + 2}`)
             .join(", ");
-          const values = updateKeys.map((key) => updates[key]);
+          const values = updateKeys.map((key) => {
+            const value = updates[key];
+            // Stringify JSONB columns
+            if ((key === 'meta' || key === 'products') && value !== null && typeof value === 'object') {
+              return JSON.stringify(value);
+            }
+            return value;
+          });
 
           const updateRes = await query(
             `UPDATE transactions SET ${setClause} WHERE transaction_id=$1 AND is_deleted=false RETURNING *`,
@@ -736,7 +743,7 @@ export default class TransactionRegistry {
       ({
         transaction_id: sanitizedTransactionId,
       } = SafeUtils.sanitizeValidate({
-        transaction_id: { value: transaction_id, type: "string", required: true },
+        transaction_id: { value: String(transaction_id), type: "string", required: true },
       }));
 
       Logger.debugLog("[TransactionRegistry] deleteTransaction attempt", {
@@ -854,7 +861,7 @@ export default class TransactionRegistry {
       ({
         transaction_id: sanitizedTransactionId,
       } = SafeUtils.sanitizeValidate({
-        transaction_id: { value: transaction_id, type: "string", required: true },
+        transaction_id: { value: String(transaction_id), type: "string", required: true },
       }));
 
       const db = this._getDbInstance();
@@ -1790,3 +1797,5 @@ export default class TransactionRegistry {
   }
 
 }
+
+module.exports = TransactionRegistry;
