@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "filename": "mysql-backup-2024-01-15-10-30-00.sql",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "size": 1073741824
+  },
+  {
+    "id": 2,
+    "filename": "mysql-backup-2024-01-14-10-30-00.sql",
+    "timestamp": "2024-01-14T10:30:00Z",
+    "size": 1073741824
+  },
+  {
+    "id": 3,
+    "filename": "mysql-backup-2024-01-13-10-30-00.sql",
+    "timestamp": "2024-01-13T10:30:00Z",
+    "size": 1073741824
+  },
+  {
+    "id": 4,
+    "filename": "mysql-backup-2024-01-12-10-30-00.sql",
+    "timestamp": "2024-01-12T10:30:00Z",
+    "size": 1073741824
+  },
+  {
+    "id": 5,
+    "filename": "mysql-backup-2024-01-11-10-30-00.sql",
+    "timestamp": "2024-01-11T10:30:00Z",
+    "size": 1073741824
+  }
+]

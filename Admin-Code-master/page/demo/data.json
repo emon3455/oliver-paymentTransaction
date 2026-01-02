@@ -1,0 +1,509 @@
+[
+  {
+    "id": 1,
+    "name": "Demo Product Alpha",
+    "price": 129.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-001",
+    "tags": ["Featured", "New"],
+    "details": [
+      { "key": "Manufacturer", "value": "Demo Corp" },
+      { "key": "Warranty", "value": "1 Year" },
+      { "key": "Weight", "value": "2.5 lbs" }
+    ],
+    "history": [
+      { "date": "2024-01-15T10:00:00Z", "action": "Created", "user": "admin" },
+      { "date": "2024-01-20T14:30:00Z", "action": "Updated", "user": "manager" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Demo Item Beta",
+    "price": 45.5,
+    "category": "Apparel",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Physical",
+    "sku": "DEM-002",
+    "tags": ["Sale"],
+    "details": [
+      { "key": "Size", "value": "Medium" },
+      { "key": "Color", "value": "Blue" },
+      { "key": "Material", "value": "Cotton" }
+    ],
+    "history": [
+      { "date": "2024-01-10T09:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Demo Digital Gamma",
+    "price": 19.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Digital",
+    "sku": "DEM-003",
+    "tags": ["New"],
+    "details": [
+      { "key": "Format", "value": "PDF" },
+      { "key": "Size", "value": "50 MB" },
+      { "key": "License", "value": "Single Use" }
+    ],
+    "history": [
+      { "date": "2024-01-12T11:00:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-18T16:00:00Z",
+        "action": "Price Updated",
+        "user": "admin"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Demo Beauty Delta",
+    "price": 34.99,
+    "category": "Beauty",
+    "status": "Draft",
+    "inStock": false,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-004",
+    "tags": [],
+    "details": [
+      { "key": "Volume", "value": "100ml" },
+      { "key": "Expiry", "value": "2025-12-31" }
+    ],
+    "history": [
+      { "date": "2024-01-08T08:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Demo Bundle Epsilon",
+    "price": 299.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Physical",
+    "sku": "DEM-005",
+    "tags": ["Featured", "Limited"],
+    "details": [
+      { "key": "Items Included", "value": "5" },
+      { "key": "Bundle Discount", "value": "20%" }
+    ],
+    "history": [
+      { "date": "2024-01-05T10:00:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-22T12:00:00Z",
+        "action": "Promo Added",
+        "user": "manager"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Demo Product Zeta",
+    "price": 89.0,
+    "category": "Apparel",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-006",
+    "tags": ["New"],
+    "details": [
+      { "key": "Size Range", "value": "S-XL" },
+      { "key": "Care Instructions", "value": "Machine Wash" }
+    ],
+    "history": [
+      { "date": "2024-01-14T13:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Demo Digital Eta",
+    "price": 14.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Digital",
+    "sku": "DEM-007",
+    "tags": ["Sale"],
+    "details": [
+      { "key": "Platform", "value": "Windows/Mac" },
+      { "key": "Version", "value": "2.0" }
+    ],
+    "history": [
+      { "date": "2024-01-11T15:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Demo Item Theta",
+    "price": 67.5,
+    "category": "Beauty",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Physical",
+    "sku": "DEM-008",
+    "tags": ["Featured"],
+    "details": [
+      { "key": "Skin Type", "value": "All" },
+      { "key": "SPF", "value": "30" }
+    ],
+    "history": [
+      { "date": "2024-01-09T09:30:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-21T10:00:00Z",
+        "action": "Promo Added",
+        "user": "manager"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Demo Product Iota",
+    "price": 199.99,
+    "category": "Electronics",
+    "status": "Archived",
+    "inStock": false,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-009",
+    "tags": [],
+    "details": [
+      { "key": "Model", "value": "2023" },
+      { "key": "Discontinued", "value": "Yes" }
+    ],
+    "history": [
+      { "date": "2023-12-01T10:00:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-01T10:00:00Z",
+        "action": "Archived",
+        "user": "manager"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Demo Bundle Kappa",
+    "price": 449.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-010",
+    "tags": ["Limited"],
+    "details": [
+      { "key": "Premium Package", "value": "Yes" },
+      { "key": "Warranty", "value": "2 Years" }
+    ],
+    "history": [
+      { "date": "2024-01-07T11:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Demo Item Lambda",
+    "price": 25.99,
+    "category": "Apparel",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-011",
+    "tags": ["New", "Sale"],
+    "details": [
+      { "key": "Season", "value": "Spring 2024" },
+      { "key": "Collection", "value": "Premium" }
+    ],
+    "history": [
+      { "date": "2024-01-13T14:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Demo Digital Mu",
+    "price": 9.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Digital",
+    "sku": "DEM-012",
+    "tags": ["Featured"],
+    "details": [
+      { "key": "Download Limit", "value": "3" },
+      { "key": "Validity", "value": "1 Year" }
+    ],
+    "history": [
+      { "date": "2024-01-06T12:00:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-19T15:00:00Z",
+        "action": "Promo Added",
+        "user": "manager"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Demo Product Nu",
+    "price": 159.99,
+    "category": "Beauty",
+    "status": "Draft",
+    "inStock": false,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-013",
+    "tags": [],
+    "details": [
+      { "key": "Organic", "value": "Yes" },
+      { "key": "Cruelty Free", "value": "Yes" }
+    ],
+    "history": [
+      { "date": "2024-01-04T10:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Demo Item Xi",
+    "price": 79.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-014",
+    "tags": ["New"],
+    "details": [
+      { "key": "Wireless", "value": "Yes" },
+      { "key": "Battery Life", "value": "20 hours" }
+    ],
+    "history": [
+      { "date": "2024-01-16T09:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Demo Bundle Omicron",
+    "price": 379.99,
+    "category": "Apparel",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Physical",
+    "sku": "DEM-015",
+    "tags": ["Featured", "Limited"],
+    "details": [
+      { "key": "Complete Set", "value": "Yes" },
+      { "key": "Gift Wrapping", "value": "Available" }
+    ],
+    "history": [
+      { "date": "2024-01-03T11:00:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-17T13:00:00Z",
+        "action": "Promo Added",
+        "user": "manager"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Demo Digital Pi",
+    "price": 29.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Digital",
+    "sku": "DEM-016",
+    "tags": ["Sale"],
+    "details": [
+      { "key": "Cloud Storage", "value": "10 GB" },
+      { "key": "Support", "value": "24/7" }
+    ],
+    "history": [
+      { "date": "2024-01-02T08:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Demo Product Rho",
+    "price": 119.99,
+    "category": "Beauty",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-017",
+    "tags": ["New", "Featured"],
+    "details": [
+      { "key": "Paraben Free", "value": "Yes" },
+      { "key": "Dermatologist Tested", "value": "Yes" }
+    ],
+    "history": [
+      { "date": "2024-01-19T10:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Demo Item Sigma",
+    "price": 54.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Physical",
+    "sku": "DEM-018",
+    "tags": ["Limited"],
+    "details": [
+      { "key": "Color Options", "value": "3" },
+      { "key": "Customizable", "value": "Yes" }
+    ],
+    "history": [
+      { "date": "2024-01-01T12:00:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-23T14:00:00Z",
+        "action": "Promo Added",
+        "user": "manager"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Demo Bundle Tau",
+    "price": 599.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-019",
+    "tags": ["Featured"],
+    "details": [
+      { "key": "Premium Edition", "value": "Yes" },
+      { "key": "Extended Warranty", "value": "3 Years" }
+    ],
+    "history": [
+      { "date": "2023-12-28T10:00:00Z", "action": "Created", "user": "admin" },
+      { "date": "2024-01-24T11:00:00Z", "action": "Updated", "user": "manager" }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Demo Product Upsilon",
+    "price": 39.99,
+    "category": "Apparel",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-020",
+    "tags": ["New", "Sale"],
+    "details": [
+      { "key": "Sustainable", "value": "Yes" },
+      { "key": "Fair Trade", "value": "Yes" }
+    ],
+    "history": [
+      { "date": "2024-01-17T15:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Demo Digital Phi",
+    "price": 49.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Digital",
+    "sku": "DEM-021",
+    "tags": ["Featured", "New"],
+    "details": [
+      { "key": "Lifetime License", "value": "Yes" },
+      { "key": "Updates", "value": "Included" }
+    ],
+    "history": [
+      { "date": "2024-01-25T09:00:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-26T10:00:00Z",
+        "action": "Promo Added",
+        "user": "manager"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Demo Item Chi",
+    "price": 94.99,
+    "category": "Beauty",
+    "status": "Draft",
+    "inStock": false,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-022",
+    "tags": [],
+    "details": [
+      { "key": "Vegan", "value": "Yes" },
+      { "key": "Gluten Free", "value": "Yes" }
+    ],
+    "history": [
+      { "date": "2024-01-26T11:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Demo Product Psi",
+    "price": 179.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "DEM-023",
+    "tags": ["Limited"],
+    "details": [
+      { "key": "Waterproof", "value": "Yes" },
+      { "key": "Shock Resistant", "value": "Yes" }
+    ],
+    "history": [
+      { "date": "2024-01-27T12:00:00Z", "action": "Created", "user": "admin" }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Demo Bundle Omega",
+    "price": 699.99,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Physical",
+    "sku": "DEM-024",
+    "tags": ["Featured", "Limited", "New"],
+    "details": [
+      { "key": "Ultimate Package", "value": "Yes" },
+      { "key": "Free Shipping", "value": "Yes" },
+      { "key": "Bonus Items", "value": "3" }
+    ],
+    "history": [
+      { "date": "2024-01-28T10:00:00Z", "action": "Created", "user": "admin" },
+      {
+        "date": "2024-01-29T14:00:00Z",
+        "action": "Promo Added",
+        "user": "manager"
+      }
+    ]
+  }
+]

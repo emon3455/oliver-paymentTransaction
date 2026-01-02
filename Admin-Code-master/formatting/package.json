@@ -1,0 +1,17 @@
+{
+  "name": "fansocial-admin-formatter",
+  "version": "1.0.0",
+  "description": "Code formatting tools for fansocial-admin project",
+  "scripts": {
+    "format": "gulp format",
+    "format:check": "gulp format:check"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-prettier": "^4.0.0",
+    "prettier": "^3.2.5",
+    "gulp-html-prettify": "^0.0.1",
+    "gulp-jsbeautifier": "^3.0.1",
+    "gulp-cli": "^2.3.0"
+  }
+}

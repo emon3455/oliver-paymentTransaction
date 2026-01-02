@@ -1,0 +1,114 @@
+/**
+ * Moderation Page Styles
+ */
+
+/* Content Reveal Modal - 90% width and height */
+#contentRevealModal .modal-dialog {
+  width: 90vw !important;
+  max-width: 90vw !important;
+  height: 90vh !important;
+  max-height: 90vh !important;
+  margin: 5vh auto !important;
+}
+
+#contentRevealModal .modal-content {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+#contentRevealModal .modal-body {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Video player container */
+#contentRevealModal .modal-body .video-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  justify-content: center;
+  position: relative;
+}
+
+#contentRevealModal .video-container .video-js {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  padding-top: 0 !important;
+  pointer-events: auto !important;
+  z-index: 1 !important;
+}
+
+#contentRevealModal .video-container .video-js .vjs-control-bar {
+  pointer-events: auto !important;
+  z-index: 10 !important;
+}
+
+#contentRevealModal .video-container .video-js .vjs-big-play-button {
+  pointer-events: auto !important;
+  z-index: 10 !important;
+}
+
+#contentRevealModal .modal-footer {
+  flex-shrink: 0;
+  border-top: 1px solid #dee2e6;
+  padding: 1rem;
+}
+
+/* Dropdown buttons styling */
+.dropdown-menu .btn {
+  margin: 0;
+  border: none;
+  text-align: left;
+}
+
+.dropdown-menu .btn:hover {
+  opacity: 0.9;
+}
+
+/* Gallery navigation styling */
+.content-gallery {
+  position: relative;
+}
+
+.gallery-nav {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.gallery-viewport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Offcanvas details styling (KYC style) */
+.code-json {
+  font-size: 0.875rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Keep disabled primary buttons blue */
+.btn-primary:disabled,
+.btn-primary.disabled {
+  background-color: #2463eb !important;
+  border-color: #2463eb !important;
+  opacity: 0.6;
+}
+
+/* Modal body for processing overlay */
+.modal-body {
+  position: relative;
+}

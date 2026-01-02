@@ -1,0 +1,29 @@
+/**
+ * Carousel Component Styles
+ * Styles for gallery carousel controls
+ */
+
+/* Gallery carousel controls: darker, clearer arrows using Bootstrap Icons */
+.content-preview .carousel .carousel-control-prev .bi,
+.content-preview .carousel .carousel-control-next .bi {
+  color: #374151; /* bolder dark grey for better contrast */
+  font-size: 2rem;
+  background-color: #e5e7eb;
+  border-radius: 50%;
+  padding: 0.35rem;
+  animation: pulseOpacity 1.8s ease-in-out infinite;
+}
+
+/* Reusable animation for pulseOpacity */
+@keyframes pulseOpacity {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+

@@ -1,0 +1,100 @@
+/**
+ * Table Component Styles
+ * Styles for the reusable table component
+ */
+
+/* Ensure tables have white background */
+.table {
+  background-color: #fff !important;
+}
+
+.table-card {
+  background-color: #fff !important;
+}
+
+.table-card .card-body {
+  background-color: #fff !important;
+}
+
+.table thead {
+  background-color: #fff !important;
+}
+
+.table thead th {
+  background-color: #fff !important;
+  padding: 0.75rem;
+  font-weight: 600;
+  border-bottom: 2px solid #dee2e6;
+  vertical-align: middle;
+}
+
+.table tbody {
+  background-color: #fff !important;
+}
+
+.table tbody tr {
+  background-color: #fff !important;
+}
+
+/* Selected row overrides white background - must be more specific */
+.table tbody tr.row-selected,
+.table tbody tr.row-selected td {
+  --bs-table-bg: #f5f6f8 !important;
+  background-color: #f5f6f8 !important;
+}
+
+.table tbody td {
+  background-color: #fff !important;
+  padding: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+  vertical-align: middle;
+}
+
+.table,
+.table thead,
+.table tbody,
+.table tfoot {
+  border-radius: 0 !important;
+}
+
+.table-card {
+  overflow: visible;
+  max-height: none;
+  box-shadow: none !important;
+}
+
+.table-card .table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.table-card .card-body {
+  overflow-x: auto;
+  overflow-y: visible;
+  border-radius: 0 !important;
+}
+
+.table-card .table thead th:last-child {
+  border-right: 1px solid #dee2e6;
+}
+
+/* Softer hover grey for table rows */
+.table-hover tbody tr:hover {
+  --bs-table-bg: #f8f9fa; /* Very light grey for hover */
+  background-color: #f8f9fa;
+}
+
+/* Selected row - different grey (darker than hover) */
+.table tbody tr.row-selected {
+  /* Bootstrap tables paint cell backgrounds using var(--bs-table-bg).
+     Setting the variable on the row makes all its cells adopt this color. */
+  --bs-table-bg: #f5f6f8; /* Softer grey for selected */
+  background-color: #f5f6f8 !important;
+}
+
+/* Ensure selected row stays grey even on hover */
+.table tbody tr.row-selected:hover {
+  --bs-table-bg: #f5f6f8;
+  background-color: #f5f6f8 !important;
+}
+

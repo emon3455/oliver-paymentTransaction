@@ -1,0 +1,2168 @@
+[
+  {
+    "orderId": 2000,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Refunded",
+    "channel": "POS",
+    "total": 90.42,
+    "createdAt": "2025-10-01T09:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product B",
+        "qty": 1,
+        "price": 36.45
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product C",
+        "qty": 2,
+        "price": 14.07
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 8.65,
+      "address": "Store #5"
+    },
+    "payments": [],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2001,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Refunded",
+    "channel": "POS",
+    "total": 104.56,
+    "createdAt": "2025-10-01T12:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-9",
+        "name": "Product C",
+        "qty": 3,
+        "price": 31.79
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product C",
+        "qty": 1,
+        "price": 40.67
+      },
+      {
+        "sku": "SKU-4",
+        "name": "Product B",
+        "qty": 1,
+        "price": 55.85
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 5.68,
+      "address": "10 Sample St"
+    },
+    "payments": [],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2002,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Processing",
+    "channel": "POS",
+    "total": 74.02,
+    "createdAt": "2025-10-01T15:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-3",
+        "name": "Product C",
+        "qty": 1,
+        "price": 9.43
+      },
+      {
+        "sku": "SKU-6",
+        "name": "Product A",
+        "qty": 2,
+        "price": 42.92
+      },
+      {
+        "sku": "SKU-7",
+        "name": "Product B",
+        "qty": 1,
+        "price": 57.39
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 0.11,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 74.02,
+        "id": "pay_2002"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2003,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Shipped",
+    "channel": "POS",
+    "total": 89.77,
+    "createdAt": "2025-10-01T18:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product C",
+        "qty": 2,
+        "price": 27.94
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product C",
+        "qty": 1,
+        "price": 9.89
+      },
+      {
+        "sku": "SKU-9",
+        "name": "Product C",
+        "qty": 3,
+        "price": 43.01
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 5.86,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 89.77,
+        "id": "pay_2003"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2004,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Processing",
+    "channel": "Web",
+    "total": 106.47,
+    "createdAt": "2025-10-01T21:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product C",
+        "qty": 3,
+        "price": 28.61
+      },
+      {
+        "sku": "SKU-6",
+        "name": "Product C",
+        "qty": 2,
+        "price": 42.42
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 5.51,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 106.47,
+        "id": "pay_2004"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2005,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Processing",
+    "channel": "POS",
+    "total": 94.85,
+    "createdAt": "2025-10-02T00:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-9",
+        "name": "Product B",
+        "qty": 3,
+        "price": 14.73
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 4.96,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 94.85,
+        "id": "pay_2005"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2006,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Shipped",
+    "channel": "POS",
+    "total": 125.07,
+    "createdAt": "2025-10-02T03:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product A",
+        "qty": 3,
+        "price": 21.15
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product B",
+        "qty": 2,
+        "price": 16.99
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 3.07,
+      "address": "Store #5"
+    },
+    "payments": [],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2007,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Pending",
+    "channel": "POS",
+    "total": 73.39,
+    "createdAt": "2025-10-02T06:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-6",
+        "name": "Product C",
+        "qty": 2,
+        "price": 43.32
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 7.26,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 73.39,
+        "id": "pay_2007"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2008,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Processing",
+    "channel": "Web",
+    "total": 49.16,
+    "createdAt": "2025-10-02T09:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product A",
+        "qty": 3,
+        "price": 26.05
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product B",
+        "qty": 2,
+        "price": 9.05
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 5.2,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 49.16,
+        "id": "pay_2008"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2009,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Processing",
+    "channel": "POS",
+    "total": 95.3,
+    "createdAt": "2025-10-02T12:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product A",
+        "qty": 2,
+        "price": 20.81
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product C",
+        "qty": 3,
+        "price": 25.4
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 7.31,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 95.3,
+        "id": "pay_2009"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2010,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 104.27,
+    "createdAt": "2025-10-02T15:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product C",
+        "qty": 1,
+        "price": 49.47
+      },
+      {
+        "sku": "SKU-2",
+        "name": "Product A",
+        "qty": 1,
+        "price": 52.31
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product A",
+        "qty": 3,
+        "price": 11.48
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 0.02,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 104.27,
+        "id": "pay_2010"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2011,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Web",
+    "total": 128.79,
+    "createdAt": "2025-10-02T18:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product B",
+        "qty": 1,
+        "price": 35.5
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product C",
+        "qty": 3,
+        "price": 43.98
+      },
+      {
+        "sku": "SKU-7",
+        "name": "Product B",
+        "qty": 3,
+        "price": 44.45
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 3.09,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 128.79,
+        "id": "pay_2011"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2012,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Web",
+    "total": 133.98,
+    "createdAt": "2025-10-02T21:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product A",
+        "qty": 2,
+        "price": 37.26
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 7.49,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 133.98,
+        "id": "pay_2012"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2013,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 81.53,
+    "createdAt": "2025-10-03T00:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-2",
+        "name": "Product B",
+        "qty": 1,
+        "price": 22.76
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 6.31,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 81.53,
+        "id": "pay_2013"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2014,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Processing",
+    "channel": "Web",
+    "total": 15.48,
+    "createdAt": "2025-10-03T03:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product B",
+        "qty": 2,
+        "price": 35.77
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 9.17,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 15.48,
+        "id": "pay_2014"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2015,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Mobile",
+    "total": 112.04,
+    "createdAt": "2025-10-03T06:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product C",
+        "qty": 3,
+        "price": 52.42
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 9.8,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 112.04,
+        "id": "pay_2015"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2016,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 61.0,
+    "createdAt": "2025-10-03T09:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product B",
+        "qty": 1,
+        "price": 50.1
+      },
+      {
+        "sku": "SKU-2",
+        "name": "Product B",
+        "qty": 2,
+        "price": 57.12
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 1.79,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2017,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Pending",
+    "channel": "Web",
+    "total": 142.42,
+    "createdAt": "2025-10-03T12:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product B",
+        "qty": 1,
+        "price": 15.95
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 3.06,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 142.42,
+        "id": "pay_2017"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2018,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Web",
+    "total": 78.33,
+    "createdAt": "2025-10-03T15:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-3",
+        "name": "Product A",
+        "qty": 2,
+        "price": 26.62
+      },
+      {
+        "sku": "SKU-5",
+        "name": "Product B",
+        "qty": 1,
+        "price": 54.76
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 7.84,
+      "address": "Store #5"
+    },
+    "payments": [],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2019,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 74.49,
+    "createdAt": "2025-10-03T18:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-9",
+        "name": "Product A",
+        "qty": 2,
+        "price": 9.47
+      },
+      {
+        "sku": "SKU-6",
+        "name": "Product C",
+        "qty": 1,
+        "price": 40.36
+      },
+      {
+        "sku": "SKU-5",
+        "name": "Product A",
+        "qty": 1,
+        "price": 32.76
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 3.19,
+      "address": "10 Sample St"
+    },
+    "payments": [],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2020,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Web",
+    "total": 145.95,
+    "createdAt": "2025-10-03T21:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product C",
+        "qty": 1,
+        "price": 34.92
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 2.81,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 145.95,
+        "id": "pay_2020"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2021,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Pending",
+    "channel": "POS",
+    "total": 131.39,
+    "createdAt": "2025-10-04T00:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product B",
+        "qty": 1,
+        "price": 21.26
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product A",
+        "qty": 3,
+        "price": 39.5
+      },
+      {
+        "sku": "SKU-9",
+        "name": "Product A",
+        "qty": 3,
+        "price": 21.29
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 6.43,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 131.39,
+        "id": "pay_2021"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2022,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Pending",
+    "channel": "POS",
+    "total": 42.1,
+    "createdAt": "2025-10-04T03:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product A",
+        "qty": 3,
+        "price": 31.45
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product A",
+        "qty": 1,
+        "price": 24.89
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 3.71,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [],
+    "notes": ""
+  },
+  {
+    "orderId": 2023,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Processing",
+    "channel": "Mobile",
+    "total": 21.63,
+    "createdAt": "2025-10-04T06:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product C",
+        "qty": 2,
+        "price": 42.55
+      },
+      {
+        "sku": "SKU-7",
+        "name": "Product C",
+        "qty": 3,
+        "price": 9.79
+      },
+      {
+        "sku": "SKU-7",
+        "name": "Product A",
+        "qty": 1,
+        "price": 58.0
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 4.36,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 21.63,
+        "id": "pay_2023"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2024,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Pending",
+    "channel": "POS",
+    "total": 89.04,
+    "createdAt": "2025-10-04T09:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product A",
+        "qty": 2,
+        "price": 18.52
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product B",
+        "qty": 1,
+        "price": 5.79
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product B",
+        "qty": 3,
+        "price": 33.89
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 3.49,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 89.04,
+        "id": "pay_2024"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2025,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Processing",
+    "channel": "POS",
+    "total": 28.57,
+    "createdAt": "2025-10-04T12:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-9",
+        "name": "Product B",
+        "qty": 1,
+        "price": 27.04
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product C",
+        "qty": 1,
+        "price": 29.59
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 5.48,
+      "address": "10 Sample St"
+    },
+    "payments": [],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2026,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Web",
+    "total": 149.4,
+    "createdAt": "2025-10-04T15:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product B",
+        "qty": 2,
+        "price": 56.83
+      },
+      {
+        "sku": "SKU-2",
+        "name": "Product C",
+        "qty": 2,
+        "price": 21.94
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product A",
+        "qty": 1,
+        "price": 53.28
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 2.43,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 149.4,
+        "id": "pay_2026"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2027,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Shipped",
+    "channel": "POS",
+    "total": 79.85,
+    "createdAt": "2025-10-04T18:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-8",
+        "name": "Product B",
+        "qty": 3,
+        "price": 45.16
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 9.64,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 79.85,
+        "id": "pay_2027"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2028,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Mobile",
+    "total": 14.24,
+    "createdAt": "2025-10-04T21:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product A",
+        "qty": 2,
+        "price": 36.25
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product B",
+        "qty": 2,
+        "price": 10.16
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 7.05,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 14.24,
+        "id": "pay_2028"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2029,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Refunded",
+    "channel": "POS",
+    "total": 114.51,
+    "createdAt": "2025-10-05T00:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-6",
+        "name": "Product A",
+        "qty": 3,
+        "price": 39.17
+      },
+      {
+        "sku": "SKU-5",
+        "name": "Product A",
+        "qty": 3,
+        "price": 33.71
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 4.09,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 114.51,
+        "id": "pay_2029"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2030,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Web",
+    "total": 56.92,
+    "createdAt": "2025-10-05T03:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-8",
+        "name": "Product B",
+        "qty": 1,
+        "price": 48.93
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 9.57,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 56.92,
+        "id": "pay_2030"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2031,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Pending",
+    "channel": "Web",
+    "total": 43.64,
+    "createdAt": "2025-10-05T06:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-8",
+        "name": "Product C",
+        "qty": 1,
+        "price": 59.55
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 1.79,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 43.64,
+        "id": "pay_2031"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2032,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 55.74,
+    "createdAt": "2025-10-05T09:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product A",
+        "qty": 3,
+        "price": 9.57
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product A",
+        "qty": 1,
+        "price": 16.88
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 3.59,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 55.74,
+        "id": "pay_2032"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2033,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 46.48,
+    "createdAt": "2025-10-05T12:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product B",
+        "qty": 2,
+        "price": 9.54
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product C",
+        "qty": 1,
+        "price": 8.4
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 2.77,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 46.48,
+        "id": "pay_2033"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2034,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Processing",
+    "channel": "POS",
+    "total": 19.26,
+    "createdAt": "2025-10-05T15:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product C",
+        "qty": 3,
+        "price": 32.85
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 3.5,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 19.26,
+        "id": "pay_2034"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2035,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Pending",
+    "channel": "POS",
+    "total": 93.95,
+    "createdAt": "2025-10-05T18:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-9",
+        "name": "Product A",
+        "qty": 3,
+        "price": 39.95
+      },
+      {
+        "sku": "SKU-9",
+        "name": "Product B",
+        "qty": 3,
+        "price": 25.14
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product B",
+        "qty": 3,
+        "price": 53.15
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 4.08,
+      "address": "Store #5"
+    },
+    "payments": [],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2036,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Pending",
+    "channel": "Web",
+    "total": 52.38,
+    "createdAt": "2025-10-05T21:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-8",
+        "name": "Product C",
+        "qty": 2,
+        "price": 24.26
+      },
+      {
+        "sku": "SKU-6",
+        "name": "Product C",
+        "qty": 2,
+        "price": 17.41
+      },
+      {
+        "sku": "SKU-9",
+        "name": "Product C",
+        "qty": 1,
+        "price": 51.48
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 0.01,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 52.38,
+        "id": "pay_2036"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2037,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Mobile",
+    "total": 51.0,
+    "createdAt": "2025-10-06T00:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-6",
+        "name": "Product B",
+        "qty": 1,
+        "price": 31.71
+      },
+      {
+        "sku": "SKU-5",
+        "name": "Product C",
+        "qty": 2,
+        "price": 8.14
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 3.35,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 51.0,
+        "id": "pay_2037"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2038,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 75.38,
+    "createdAt": "2025-10-06T03:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product C",
+        "qty": 2,
+        "price": 49.05
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 8.95,
+      "address": "10 Sample St"
+    },
+    "payments": [],
+    "notes": ""
+  },
+  {
+    "orderId": 2039,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Pending",
+    "channel": "Web",
+    "total": 143.37,
+    "createdAt": "2025-10-06T06:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-3",
+        "name": "Product C",
+        "qty": 2,
+        "price": 27.57
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 5.8,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 143.37,
+        "id": "pay_2039"
+      }
+    ],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2040,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Shipped",
+    "channel": "POS",
+    "total": 100.19,
+    "createdAt": "2025-10-06T09:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-8",
+        "name": "Product A",
+        "qty": 3,
+        "price": 17.43
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 4.89,
+      "address": "Store #5"
+    },
+    "payments": [],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2041,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 137.75,
+    "createdAt": "2025-10-06T12:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-2",
+        "name": "Product B",
+        "qty": 2,
+        "price": 42.83
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 9.68,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 137.75,
+        "id": "pay_2041"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2042,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Processing",
+    "channel": "POS",
+    "total": 146.63,
+    "createdAt": "2025-10-06T15:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product B",
+        "qty": 1,
+        "price": 12.7
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 1.98,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 146.63,
+        "id": "pay_2042"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2043,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Processing",
+    "channel": "Web",
+    "total": 38.89,
+    "createdAt": "2025-10-06T18:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-6",
+        "name": "Product C",
+        "qty": 3,
+        "price": 13.5
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product C",
+        "qty": 3,
+        "price": 32.27
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 4.64,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 38.89,
+        "id": "pay_2043"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2044,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Web",
+    "total": 56.47,
+    "createdAt": "2025-10-06T21:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product B",
+        "qty": 2,
+        "price": 6.03
+      },
+      {
+        "sku": "SKU-7",
+        "name": "Product C",
+        "qty": 1,
+        "price": 55.21
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product A",
+        "qty": 2,
+        "price": 10.81
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 1.96,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 56.47,
+        "id": "pay_2044"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2045,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Pending",
+    "channel": "Mobile",
+    "total": 47.34,
+    "createdAt": "2025-10-07T00:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product B",
+        "qty": 1,
+        "price": 48.33
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product A",
+        "qty": 1,
+        "price": 19.12
+      },
+      {
+        "sku": "SKU-7",
+        "name": "Product C",
+        "qty": 2,
+        "price": 51.27
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 1.83,
+      "address": "Store #5"
+    },
+    "payments": [],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2046,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Refunded",
+    "channel": "POS",
+    "total": 70.97,
+    "createdAt": "2025-10-07T03:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product C",
+        "qty": 2,
+        "price": 58.29
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 3.83,
+      "address": "Store #5"
+    },
+    "payments": [],
+    "notes": ""
+  },
+  {
+    "orderId": 2047,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Processing",
+    "channel": "Mobile",
+    "total": 12.81,
+    "createdAt": "2025-10-07T06:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product A",
+        "qty": 2,
+        "price": 56.51
+      },
+      {
+        "sku": "SKU-3",
+        "name": "Product B",
+        "qty": 3,
+        "price": 45.65
+      },
+      {
+        "sku": "SKU-6",
+        "name": "Product A",
+        "qty": 2,
+        "price": 50.88
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 4.6,
+      "address": "10 Sample St"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 12.81,
+        "id": "pay_2047"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2048,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Mobile",
+    "total": 138.45,
+    "createdAt": "2025-10-07T09:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product A",
+        "qty": 3,
+        "price": 10.36
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product C",
+        "qty": 1,
+        "price": 28.46
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 9.38,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 138.45,
+        "id": "pay_2048"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2049,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Mobile",
+    "total": 115.64,
+    "createdAt": "2025-10-07T12:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product A",
+        "qty": 2,
+        "price": 19.0
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 6.7,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 115.64,
+        "id": "pay_2049"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2050,
+    "customer": {
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 143.79,
+    "createdAt": "2025-10-07T15:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product B",
+        "qty": 3,
+        "price": 54.74
+      },
+      {
+        "sku": "SKU-9",
+        "name": "Product A",
+        "qty": 1,
+        "price": 6.21
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product C",
+        "qty": 2,
+        "price": 31.3
+      }
+    ],
+    "shipping": {
+      "method": "Express",
+      "cost": 1.68,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 143.79,
+        "id": "pay_2050"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2051,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Web",
+    "total": 130.78,
+    "createdAt": "2025-10-07T18:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-3",
+        "name": "Product C",
+        "qty": 3,
+        "price": 37.47
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product C",
+        "qty": 2,
+        "price": 53.75
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product A",
+        "qty": 2,
+        "price": 15.9
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 0.03,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 130.78,
+        "id": "pay_2051"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2052,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Processing",
+    "channel": "POS",
+    "total": 128.41,
+    "createdAt": "2025-10-07T21:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-9",
+        "name": "Product A",
+        "qty": 1,
+        "price": 53.03
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 0.04,
+      "address": "22 Ocean Ave"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 128.41,
+        "id": "pay_2052"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2053,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Shipped",
+    "channel": "POS",
+    "total": 80.03,
+    "createdAt": "2025-10-08T00:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-7",
+        "name": "Product B",
+        "qty": 1,
+        "price": 48.76
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product B",
+        "qty": 1,
+        "price": 10.19
+      },
+      {
+        "sku": "SKU-2",
+        "name": "Product B",
+        "qty": 3,
+        "price": 32.46
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 3.34,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 80.03,
+        "id": "pay_2053"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2054,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Pending",
+    "channel": "Mobile",
+    "total": 145.95,
+    "createdAt": "2025-10-08T03:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product C",
+        "qty": 2,
+        "price": 21.5
+      },
+      {
+        "sku": "SKU-7",
+        "name": "Product C",
+        "qty": 2,
+        "price": 58.61
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 8.39,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 145.95,
+        "id": "pay_2054"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2055,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Mobile",
+    "total": 147.76,
+    "createdAt": "2025-10-08T06:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product A",
+        "qty": 2,
+        "price": 34.55
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 3.12,
+      "address": "10 Sample St"
+    },
+    "payments": [],
+    "notes": "Hold until confirmed."
+  },
+  {
+    "orderId": 2056,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Shipped",
+    "channel": "Mobile",
+    "total": 58.44,
+    "createdAt": "2025-10-08T09:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-5",
+        "name": "Product C",
+        "qty": 1,
+        "price": 12.45
+      },
+      {
+        "sku": "SKU-1",
+        "name": "Product B",
+        "qty": 3,
+        "price": 49.51
+      }
+    ],
+    "shipping": {
+      "method": "Standard",
+      "cost": 3.98,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 58.44,
+        "id": "pay_2056"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2057,
+    "customer": {
+      "name": "Cara",
+      "email": "cara@example.com"
+    },
+    "status": "Pending",
+    "channel": "Web",
+    "total": 138.41,
+    "createdAt": "2025-10-08T12:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-9",
+        "name": "Product A",
+        "qty": 3,
+        "price": 26.84
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 6.63,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 138.41,
+        "id": "pay_2057"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "orderId": 2058,
+    "customer": {
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    "status": "Shipped",
+    "channel": "POS",
+    "total": 60.26,
+    "createdAt": "2025-10-08T15:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-4",
+        "name": "Product B",
+        "qty": 2,
+        "price": 52.86
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 8.32,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 60.26,
+        "id": "pay_2058"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  },
+  {
+    "orderId": 2059,
+    "customer": {
+      "name": "Dale",
+      "email": "dale@example.com"
+    },
+    "status": "Refunded",
+    "channel": "Mobile",
+    "total": 60.91,
+    "createdAt": "2025-10-08T18:00:00Z",
+    "items": [
+      {
+        "sku": "SKU-1",
+        "name": "Product A",
+        "qty": 3,
+        "price": 57.88
+      },
+      {
+        "sku": "SKU-8",
+        "name": "Product A",
+        "qty": 1,
+        "price": 20.06
+      }
+    ],
+    "shipping": {
+      "method": "Pickup",
+      "cost": 7.15,
+      "address": "Store #5"
+    },
+    "payments": [
+      {
+        "method": "Card",
+        "amount": 60.91,
+        "id": "pay_2059"
+      }
+    ],
+    "notes": "Deliver after 5pm."
+  }
+]

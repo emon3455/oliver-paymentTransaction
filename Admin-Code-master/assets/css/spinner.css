@@ -1,0 +1,14 @@
+/**
+ * Spinner Component Styles
+ * Styles for loading spinners
+ */
+
+.spinner-large {
+  width: 3rem;
+  height: 3rem;
+}
+
+.spinner-border {
+  color: var(--bs-primary);
+}
+

@@ -1,0 +1,30 @@
+/**
+ * Badge Component Styles
+ * Styles for status badges with pastel colors
+ */
+
+.badge.text-bg-success {
+  background-color: var(--bs-success-pastel) !important;
+  color: #0f172a !important;
+}
+
+.badge.text-bg-danger {
+  background-color: var(--bs-danger-pastel) !important;
+  color: #0f172a !important;
+}
+
+.badge.text-bg-warning {
+  background-color: var(--bs-warning-pastel) !important;
+  color: #0f172a !important;
+}
+
+.badge.text-bg-info {
+  background-color: var(--bs-info-pastel) !important;
+  color: #0f172a !important;
+}
+
+.badge.text-bg-secondary {
+  background-color: var(--bs-secondary-pastel) !important;
+  color: #0f172a !important;
+}
+

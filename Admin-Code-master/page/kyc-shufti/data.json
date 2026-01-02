@@ -1,0 +1,434 @@
+[
+  {
+    "id": 1,
+    "userId": "user_12345",
+    "referenceId": "ref_abc123xyz",
+    "status": "approved",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "US",
+      "submitted_at": "2024-01-15T10:25:00Z"
+    },
+    "email": "user1@example.com",
+    "lastEvent": "approved",
+    "locale": "en-US",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_abc123xyz"
+  },
+  {
+    "id": 2,
+    "userId": "user_67890",
+    "referenceId": "ref_def456uvw",
+    "status": "declined",
+    "createdAt": "2024-01-14T14:20:00Z",
+    "data": {
+      "document_type": "driving_license",
+      "country": "UK",
+      "submitted_at": "2024-01-14T14:15:00Z",
+      "decline_reason": "Document expired"
+    },
+    "email": "user2@example.com",
+    "lastEvent": "declined",
+    "locale": "en-GB",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_def456uvw"
+  },
+  {
+    "id": 3,
+    "userId": "user_11111",
+    "referenceId": "ref_ghi789rst",
+    "status": "timeout",
+    "createdAt": "2024-01-13T09:10:00Z",
+    "data": {
+      "document_type": "id_card",
+      "country": "CA",
+      "submitted_at": "2024-01-13T09:05:00Z"
+    },
+    "email": "user3@example.com",
+    "lastEvent": "timeout",
+    "locale": "fr-FR",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_ghi789rst"
+  },
+  {
+    "id": 4,
+    "userId": "user_22222",
+    "referenceId": "ref_jkl012mno",
+    "status": "approved",
+    "createdAt": "2024-01-12T16:45:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "AU",
+      "submitted_at": "2024-01-12T16:40:00Z"
+    },
+    "email": "user4@example.com",
+    "lastEvent": "approved",
+    "locale": "de-DE",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_jkl012mno"
+  },
+  {
+    "id": 5,
+    "userId": "user_33333",
+    "referenceId": "ref_pqr345stu",
+    "status": "declined",
+    "createdAt": "2024-01-11T11:30:00Z",
+    "data": {
+      "document_type": "driving_license",
+      "country": "US",
+      "submitted_at": "2024-01-11T11:25:00Z",
+      "decline_reason": "Face mismatch"
+    },
+    "email": "user5@example.com",
+    "lastEvent": "declined",
+    "locale": "es-ES",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_pqr345stu"
+  },
+  {
+    "id": 6,
+    "userId": "user_44444",
+    "referenceId": "ref_vwx678yza",
+    "status": "approved",
+    "createdAt": "2024-01-10T13:20:00Z",
+    "data": {
+      "document_type": "id_card",
+      "country": "DE",
+      "submitted_at": "2024-01-10T13:15:00Z"
+    },
+    "email": "user6@example.com",
+    "lastEvent": "approved",
+    "locale": "it-IT",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_vwx678yza"
+  },
+  {
+    "id": 7,
+    "userId": "user_55555",
+    "referenceId": "ref_bcd901efg",
+    "status": "timeout",
+    "createdAt": "2024-01-09T08:50:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "FR",
+      "submitted_at": "2024-01-09T08:45:00Z"
+    },
+    "email": "user7@example.com",
+    "lastEvent": "timeout",
+    "locale": "nl-NL",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_bcd901efg"
+  },
+  {
+    "id": 8,
+    "userId": "user_66666",
+    "referenceId": "ref_hij234klm",
+    "status": "approved",
+    "createdAt": "2024-01-08T15:10:00Z",
+    "data": {
+      "document_type": "driving_license",
+      "country": "IT",
+      "submitted_at": "2024-01-08T15:05:00Z"
+    },
+    "email": "user8@example.com",
+    "lastEvent": "approved",
+    "locale": "pt-PT",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_hij234klm"
+  },
+  {
+    "id": 9,
+    "userId": "user_77777",
+    "referenceId": "ref_nop567qrs",
+    "status": "declined",
+    "createdAt": "2024-01-07T12:00:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "ES",
+      "submitted_at": "2024-01-07T11:55:00Z",
+      "decline_reason": "Document not clear"
+    },
+    "email": "user9@example.com",
+    "lastEvent": "declined",
+    "locale": "pl-PL",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_nop567qrs"
+  },
+  {
+    "id": 10,
+    "userId": "user_88888",
+    "referenceId": "ref_tuv890wxy",
+    "status": "approved",
+    "createdAt": "2024-01-06T17:30:00Z",
+    "data": {
+      "document_type": "id_card",
+      "country": "NL",
+      "submitted_at": "2024-01-06T17:25:00Z"
+    },
+    "email": "user10@example.com",
+    "lastEvent": "approved",
+    "locale": "sv-SE",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_tuv890wxy"
+  },
+  {
+    "id": 11,
+    "userId": "user_99999",
+    "referenceId": "ref_zab123cde",
+    "status": "timeout",
+    "createdAt": "2024-01-05T09:15:00Z",
+    "data": {
+      "document_type": "driving_license",
+      "country": "BE",
+      "submitted_at": "2024-01-05T09:10:00Z"
+    },
+    "email": "user11@example.com",
+    "lastEvent": "timeout",
+    "locale": "no-NO",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_zab123cde"
+  },
+  {
+    "id": 12,
+    "userId": "user_10101",
+    "referenceId": "ref_fgh456ijk",
+    "status": "approved",
+    "createdAt": "2024-01-04T14:40:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "CH",
+      "submitted_at": "2024-01-04T14:35:00Z"
+    },
+    "email": "user12@example.com",
+    "lastEvent": "approved",
+    "locale": "da-DK",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_fgh456ijk"
+  },
+  {
+    "id": 13,
+    "userId": "user_20202",
+    "referenceId": "ref_lmn789opq",
+    "status": "declined",
+    "createdAt": "2024-01-03T11:20:00Z",
+    "data": {
+      "document_type": "id_card",
+      "country": "AT",
+      "submitted_at": "2024-01-03T11:15:00Z",
+      "decline_reason": "Invalid document"
+    },
+    "email": "user13@example.com",
+    "lastEvent": "declined",
+    "locale": "fi-FI",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_lmn789opq"
+  },
+  {
+    "id": 14,
+    "userId": "user_30303",
+    "referenceId": "ref_rst012uvw",
+    "status": "approved",
+    "createdAt": "2024-01-02T16:00:00Z",
+    "data": {
+      "document_type": "driving_license",
+      "country": "SE",
+      "submitted_at": "2024-01-02T15:55:00Z"
+    },
+    "email": "user14@example.com",
+    "lastEvent": "approved",
+    "locale": "cs-CZ",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_rst012uvw"
+  },
+  {
+    "id": 15,
+    "userId": "user_40404",
+    "referenceId": "ref_xyz345abc",
+    "status": "timeout",
+    "createdAt": "2024-01-01T10:25:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "NO",
+      "submitted_at": "2024-01-01T10:20:00Z"
+    },
+    "email": "user15@example.com",
+    "lastEvent": "timeout",
+    "locale": "hu-HU",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_xyz345abc"
+  },
+  {
+    "id": 16,
+    "userId": "user_50505",
+    "referenceId": "ref_def678ghi",
+    "status": "approved",
+    "createdAt": "2023-12-31T13:50:00Z",
+    "data": {
+      "document_type": "id_card",
+      "country": "DK",
+      "submitted_at": "2023-12-31T13:45:00Z"
+    },
+    "email": "user16@example.com",
+    "lastEvent": "approved",
+    "locale": "ro-RO",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_def678ghi"
+  },
+  {
+    "id": 17,
+    "userId": "user_60606",
+    "referenceId": "ref_jkl901mno",
+    "status": "declined",
+    "createdAt": "2023-12-30T08:30:00Z",
+    "data": {
+      "document_type": "driving_license",
+      "country": "FI",
+      "submitted_at": "2023-12-30T08:25:00Z",
+      "decline_reason": "Document damaged"
+    },
+    "email": "user17@example.com",
+    "lastEvent": "declined",
+    "locale": "bg-BG",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_jkl901mno"
+  },
+  {
+    "id": 18,
+    "userId": "user_70707",
+    "referenceId": "ref_pqr234stu",
+    "status": "approved",
+    "createdAt": "2023-12-29T15:15:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "PL",
+      "submitted_at": "2023-12-29T15:10:00Z"
+    },
+    "email": "user18@example.com",
+    "lastEvent": "approved",
+    "locale": "el-GR",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_pqr234stu"
+  },
+  {
+    "id": 19,
+    "userId": "user_80808",
+    "referenceId": "ref_vwx567yza",
+    "status": "timeout",
+    "createdAt": "2023-12-28T09:40:00Z",
+    "data": {
+      "document_type": "id_card",
+      "country": "CZ",
+      "submitted_at": "2023-12-28T09:35:00Z"
+    },
+    "email": "user19@example.com",
+    "lastEvent": "timeout",
+    "locale": "ie-IE",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_vwx567yza"
+  },
+  {
+    "id": 20,
+    "userId": "user_90909",
+    "referenceId": "ref_bcd890efg",
+    "status": "approved",
+    "createdAt": "2023-12-27T12:55:00Z",
+    "data": {
+      "document_type": "driving_license",
+      "country": "IE",
+      "submitted_at": "2023-12-27T12:50:00Z"
+    },
+    "email": "user20@example.com",
+    "lastEvent": "approved",
+    "locale": "at-AT",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_bcd890efg"
+  },
+  {
+    "id": 21,
+    "userId": "user_01010",
+    "referenceId": "ref_hij123klm",
+    "status": "declined",
+    "createdAt": "2023-12-26T14:20:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "PT",
+      "submitted_at": "2023-12-26T14:15:00Z",
+      "decline_reason": "Name mismatch"
+    },
+    "email": "user21@example.com",
+    "lastEvent": "declined",
+    "locale": "ch-CH",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_hij123klm"
+  },
+  {
+    "id": 22,
+    "userId": "user_11112",
+    "referenceId": "ref_nop456qrs",
+    "status": "approved",
+    "createdAt": "2023-12-25T11:05:00Z",
+    "data": {
+      "document_type": "id_card",
+      "country": "GR",
+      "submitted_at": "2023-12-25T11:00:00Z"
+    },
+    "email": "user22@example.com",
+    "lastEvent": "approved",
+    "locale": "be-BE",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_nop456qrs"
+  },
+  {
+    "id": 23,
+    "userId": "user_21213",
+    "referenceId": "ref_tuv789wxy",
+    "status": "timeout",
+    "createdAt": "2023-12-24T16:30:00Z",
+    "data": {
+      "document_type": "driving_license",
+      "country": "HU",
+      "submitted_at": "2023-12-24T16:25:00Z"
+    },
+    "email": "user23@example.com",
+    "lastEvent": "timeout",
+    "locale": "ca-CA",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_tuv789wxy"
+  },
+  {
+    "id": 24,
+    "userId": "user_31314",
+    "referenceId": "ref_zab012cde",
+    "status": "approved",
+    "createdAt": "2023-12-23T10:45:00Z",
+    "data": {
+      "document_type": "passport",
+      "country": "RO",
+      "submitted_at": "2023-12-23T10:40:00Z"
+    },
+    "email": "user24@example.com",
+    "lastEvent": "approved",
+    "locale": "au-AU",
+    "mode": "face",
+    "verificationUrl": "https://shuftipro.com/verify/ref_zab012cde"
+  },
+  {
+    "id": 25,
+    "userId": "user_41415",
+    "referenceId": "ref_fgh345ijk",
+    "status": "declined",
+    "createdAt": "2023-12-22T13:10:00Z",
+    "data": {
+      "document_type": "id_card",
+      "country": "BG",
+      "submitted_at": "2023-12-22T13:05:00Z",
+      "decline_reason": "Expired document"
+    },
+    "email": "user25@example.com",
+    "lastEvent": "declined",
+    "locale": "uk-UK",
+    "mode": "document",
+    "verificationUrl": "https://shuftipro.com/verify/ref_fgh345ijk"
+  }
+]

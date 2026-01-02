@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "filename": "scylla-backup-2024-01-15-10-30-00.tar.gz",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "size": 2147483648
+  },
+  {
+    "id": 2,
+    "filename": "scylla-backup-2024-01-14-10-30-00.tar.gz",
+    "timestamp": "2024-01-14T10:30:00Z",
+    "size": 2147483648
+  },
+  {
+    "id": 3,
+    "filename": "scylla-backup-2024-01-13-10-30-00.tar.gz",
+    "timestamp": "2024-01-13T10:30:00Z",
+    "size": 2147483648
+  },
+  {
+    "id": 4,
+    "filename": "scylla-backup-2024-01-12-10-30-00.tar.gz",
+    "timestamp": "2024-01-12T10:30:00Z",
+    "size": 2147483648
+  },
+  {
+    "id": 5,
+    "filename": "scylla-backup-2024-01-11-10-30-00.tar.gz",
+    "timestamp": "2024-01-11T10:30:00Z",
+    "size": 2147483648
+  },
+  {
+    "id": 6,
+    "filename": "scylla-backup-2024-01-10-10-30-00.tar.gz",
+    "timestamp": "2024-01-10T10:30:00Z",
+    "size": 2147483648
+  },
+  {
+    "id": 7,
+    "filename": "scylla-backup-2024-01-09-10-30-00.tar.gz",
+    "timestamp": "2024-01-09T10:30:00Z",
+    "size": 2147483648
+  },
+  {
+    "id": 8,
+    "filename": "scylla-backup-2024-01-08-10-30-00.tar.gz",
+    "timestamp": "2024-01-08T10:30:00Z",
+    "size": 2147483648
+  }
+]

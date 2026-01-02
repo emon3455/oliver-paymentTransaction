@@ -1,0 +1,19 @@
+/* Page-specific styles for KYC (Shufti) */
+.code-json {
+  font-size: 0.875rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+/* User ID link styling */
+a[data-lookup-user] {
+  cursor: pointer;
+  text-decoration: underline;
+}
+a[data-lookup-user]:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.table td {
+  vertical-align: middle;
+}

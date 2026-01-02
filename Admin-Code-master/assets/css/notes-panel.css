@@ -1,0 +1,14 @@
+/**
+ * Notes Panel Component Styles
+ * Styles for the notes panel below content
+ */
+
+.notes-below {
+  margin-top: 1rem;
+}
+
+.notes-below .list-group-item {
+  background: transparent;
+  padding: 0.35rem 0.75rem;
+}
+

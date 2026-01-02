@@ -1,0 +1,40 @@
+/* Page-specific styles for Integration Reminders */
+
+/* Simple clean styling with minimal icons and full-width buttons */
+.integration-reminders {
+  /* Container for integration reminders content */
+}
+
+.integration-reminders .card {
+  /* Card styling for reminder items */
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.integration-reminders .card-title {
+  /* Reminder title styling */
+  font-weight: 600;
+}
+
+.integration-reminders .card-text {
+  /* Reminder description styling */
+  color: #6c757d;
+}
+
+.integration-reminders .badge {
+  /* Badge styling for status and priority */
+  font-weight: 500;
+}
+
+.integration-reminders h4 {
+  /* Category header styling */
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+
+

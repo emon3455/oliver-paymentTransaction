@@ -1,0 +1,118 @@
+/**
+ * Main Layout and Global Colors
+ * Contains only layout styles and global color variables
+ * Component-specific styles are in their own CSS files
+ */
+
+/* Global Color Variables */
+:root {
+  --bs-primary: #2463eb;
+  --bs-body-bg: #f7f8fb;
+  --bs-body-color: #0f172a;
+  --bs-secondary: #a4a7a9;
+  --card-radius: 1rem;
+  --card-shadow: 0 10px 25px rgba(2, 6, 23, 0.06);
+  /* Pastel colors for status badges */
+  --bs-success-pastel: #a8f0c5;
+  --bs-danger-pastel: #f0a8a8;
+  --bs-warning-pastel: #f0d4a8;
+  --bs-info-pastel: #a8d4f0;
+  --bs-secondary-pastel: #c5a8f0;
+}
+
+/* Base Layout */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Global Component Base Styles */
+.card {
+  border: 0;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.btn {
+  border-radius: 0.5rem;
+}
+
+/* Application Layout */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, rgba(36, 99, 235, 0.08), #ffffff);
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bs-primary);
+  box-shadow: 0 0 0 6px rgba(36, 99, 235, 0.12);
+}
+
+.app-sidebar .nav-link {
+  color: #111827;
+  border-radius: 0.65rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.app-sidebar .nav-link.active,
+.app-sidebar .nav-link:hover {
+  background: rgba(36, 99, 235, 0.08);
+}
+
+.nav-group {
+  margin-bottom: 0.25rem;
+}
+
+.nav-group-toggle {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.nav-group-toggle i {
+  transition: transform 0.2s;
+}
+
+.nav-group-children {
+  padding-left: 1rem;
+  margin-top: 0.25rem;
+}
+
+.nav-group-child {
+  padding-left: 1.5rem !important;
+  font-size: 0.9rem;
+}
+
+.nav-group-nested {
+  font-weight: 500;
+}
+
+.app-main {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+/* Utility Classes */
+.env-pill {
+  min-width: 90px;
+}

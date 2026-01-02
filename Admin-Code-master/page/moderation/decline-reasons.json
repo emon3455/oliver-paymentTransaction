@@ -1,0 +1,40 @@
+[
+  {
+    "code": "VIOLENCE",
+    "label": "Violence or Harmful Content",
+    "description": "Content contains violence or promotes harm"
+  },
+  {
+    "code": "HATE_SPEECH",
+    "label": "Hate Speech",
+    "description": "Content contains hate speech or discrimination"
+  },
+  {
+    "code": "COPYRIGHT",
+    "label": "Copyright Violation",
+    "description": "Content violates copyright"
+  },
+  {
+    "code": "SPAM",
+    "label": "Spam",
+    "description": "Content is spam"
+  },
+  {
+    "code": "NUDITY",
+    "label": "Nudity or Sexual Content",
+    "description": "Inappropriate sexual content"
+  },
+  {
+    "code": "OTHER",
+    "label": "Other",
+    "description": "Other reason (specify below)"
+  }
+]
+
+
+
+
+
+
+
+

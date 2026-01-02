@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Product A",
+    "price": 120,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": false,
+    "type": "Physical",
+    "sku": "ELE-001",
+    "tags": ["Featured", "New"]
+  },
+  {
+    "id": 2,
+    "name": "Product B",
+    "price": 40,
+    "category": "Apparel",
+    "status": "Draft",
+    "inStock": true,
+    "promo": true,
+    "type": "Physical",
+    "sku": "APP-101",
+    "tags": ["Sale"]
+  },
+  {
+    "id": 3,
+    "name": "Product C",
+    "price": 12,
+    "category": "Beauty",
+    "status": "Active",
+    "inStock": false,
+    "promo": false,
+    "type": "Digital",
+    "sku": "BEA-050",
+    "tags": []
+  },
+  {
+    "id": 4,
+    "name": "E-Book D",
+    "price": 8,
+    "category": "Electronics",
+    "status": "Archived",
+    "inStock": true,
+    "promo": false,
+    "type": "Digital",
+    "sku": "EBO-777",
+    "tags": ["Limited"]
+  },
+  {
+    "id": 5,
+    "name": "Bundle E",
+    "price": 250,
+    "category": "Electronics",
+    "status": "Active",
+    "inStock": true,
+    "promo": true,
+    "type": "Physical",
+    "sku": "BND-999",
+    "tags": ["Featured", "Limited"]
+  }
+]

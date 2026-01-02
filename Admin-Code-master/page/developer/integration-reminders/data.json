@@ -1,0 +1,121 @@
+[
+  {
+    "id": "moderation-001",
+    "category": "Media Upload",
+    "title": "Integrate into media upload flow",
+    "description": "Integrate moderation API into the frontend media upload flow. When users upload media (images, videos, audio), automatically create a moderation record.",
+    "status": "pending",
+    "priority": "high"
+  },
+  {
+    "id": "moderation-002",
+    "category": "Handler Integration",
+    "title": "Integrate handler for approved flow",
+    "description": "Create frontend handler for approved moderation status. Handle approved status for all types: text, image, video, audio, gallery, personal-tag, global-tag. Update UI to reflect approved status and show content to users.",
+    "status": "pending",
+    "priority": "high"
+  },
+  {
+    "id": "moderation-003",
+    "category": "Handler Integration",
+    "title": "Integrate handler for declined flow",
+    "description": "Create frontend handler for declined moderation status. Handle declined status for all types: text, image, video, audio, gallery, personal-tag, global-tag. Hide or remove declined content from user view. Display public note to user if provided.",
+    "status": "pending",
+    "priority": "high"
+  },
+  {
+    "id": "moderation-004",
+    "category": "Handler Integration",
+    "title": "Integrate handler for re-submit flow",
+    "description": "Create frontend handler for re-submit moderation status. Handle re-submit status for all types: text, image, video, audio, gallery, personal-tag, global-tag. Allow users to resubmit content that was previously declined.",
+    "status": "pending",
+    "priority": "high"
+  },
+  {
+    "id": "moderation-005",
+    "category": "Notifications",
+    "title": "Email notifications for approved",
+    "description": "Send email notifications to users when their content is approved. Include content details and approval information. For all types: text, image, video, audio, gallery, personal-tag, global-tag.",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "moderation-006",
+    "category": "Notifications",
+    "title": "Email notifications for declined",
+    "description": "Send email notifications to users when their content is declined. Include public note if provided. Include reason code and explanation. For all types: text, image, video, audio, gallery, personal-tag, global-tag.",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "moderation-007",
+    "category": "Notifications",
+    "title": "Email notifications for re-submit",
+    "description": "Send email notifications to users when content is marked for re-submission. Include instructions for resubmission. For all types: text, image, video, audio, gallery, personal-tag, global-tag.",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "moderation-008",
+    "category": "Notifications",
+    "title": "Internal notifications for approved",
+    "description": "Send internal notifications (in-app) to users when their content is approved. Show notification in user's notification center. For all types: text, image, video, audio, gallery, personal-tag, global-tag.",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "moderation-009",
+    "category": "Notifications",
+    "title": "Internal notifications for declined",
+    "description": "Send internal notifications (in-app) to users when their content is declined. Show notification in user's notification center with public note if provided. For all types: text, image, video, audio, gallery, personal-tag, global-tag.",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "moderation-010",
+    "category": "Notifications",
+    "title": "Internal notifications for re-submit",
+    "description": "Send internal notifications (in-app) to users when content is marked for re-submission. Show notification in user's notification center with resubmission instructions. For all types: text, image, video, audio, gallery, personal-tag, global-tag.",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "moderation-011",
+    "category": "Tag Management",
+    "title": "Updating global tags and flushing caches",
+    "description": "When global tags are updated through moderation, flush relevant caches to ensure updated tag data is reflected across the application. Integrate cache flush API call after global tag updates.",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "moderation-012",
+    "category": "Tag Management",
+    "title": "Updating personal tags and flushing caches",
+    "description": "When personal tags are updated through moderation, flush relevant caches to ensure updated tag data is reflected across the application. Integrate cache flush API call after personal tag updates.",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "moderation-013",
+    "category": "User Details",
+    "title": "Adding user details slide-in in admin moderation on click of user",
+    "description": "Add user details slide-in panel in admin moderation page when clicking on user ID. Display user information in a slide-in panel.",
+    "status": "completed",
+    "priority": "low"
+  },
+  {
+    "id": "moderation-014",
+    "category": "Content Deleted",
+    "title": "Add Content Deleted field to meta for soft delete tracking",
+    "description": "Add contentDeleted field to moderation meta object. When media is soft deleted, update moderation record with contentDeleted: true and contentDeletedAt timestamp. This allows tracking of deleted content in moderation system.",
+    "status": "pending",
+    "priority": "medium"
+  }
+]
+
+
+
+
+
+
+

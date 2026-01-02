@@ -1,0 +1,291 @@
+/**
+ * Page-specific styles for Edge Tests - Demo Class (Template)
+ * 
+ * Color Theme: Pale Blue
+ * - Primary blue: #2463eb (from main.css)
+ * - Background variations: rgba(36, 99, 235, 0.05-0.15)
+ * - Card shadows: 0 10px 25px rgba(2, 6, 23, 0.06)
+ */
+
+/* Section Backgrounds - Pale Blue Theme */
+.demo-section {
+  background: rgba(36, 99, 235, 0.05);
+  border-radius: 0;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(36, 99, 235, 0.1);
+}
+
+.demo-section h3 {
+  color: var(--bs-primary);
+  margin-bottom: 1rem;
+}
+
+.demo-section h4 {
+  color: #1e40af;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Prerequisites Section */
+.prerequisites-section {
+  background: rgba(36, 99, 235, 0.08);
+  border-left: 4px solid var(--bs-primary);
+}
+
+/* Terminology Section */
+.terminology-section {
+  background: rgba(36, 99, 235, 0.06);
+}
+
+.terminology-item {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 0;
+  border-left: 3px solid var(--bs-primary);
+}
+
+.terminology-item strong {
+  color: var(--bs-primary);
+}
+
+/* Index/Navigation Section */
+.index-section {
+  background: rgba(36, 99, 235, 0.05);
+}
+
+.index-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0;
+  text-decoration: none;
+  color: #1e40af;
+  border: 1px solid rgba(36, 99, 235, 0.2);
+  transition: all 0.2s ease;
+}
+
+.index-link:hover {
+  background: rgba(36, 99, 235, 0.1);
+  border-color: var(--bs-primary);
+  color: var(--bs-primary);
+  transform: translateX(5px);
+}
+
+/* Test Scenario Cards */
+.test-scenario-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(36, 99, 235, 0.15);
+  border-radius: 0;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.test-scenario-card:hover {
+  box-shadow: 0 15px 35px rgba(36, 99, 235, 0.12);
+  border-color: rgba(36, 99, 235, 0.3);
+}
+
+.test-scenario-card .card-header {
+  background: rgba(36, 99, 235, 0.08);
+  border-bottom: 1px solid rgba(36, 99, 235, 0.15);
+  padding: 1rem 1.5rem;
+}
+
+.test-scenario-card .card-title {
+  color: var(--bs-primary);
+  margin: 0;
+}
+
+/* Blue Buttons */
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+  border-color: #1e40af;
+}
+
+.btn-outline-primary {
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: white;
+}
+
+/* Code Block Styling */
+.code-example {
+  background: #f8f9fa;
+  border: 1px solid rgba(36, 99, 235, 0.2);
+  border-radius: 0;
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.code-example pre {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: #1e40af;
+}
+
+.code-example code {
+  color: #1e40af;
+  font-family: inherit;
+}
+
+/* Checklist Styling */
+.checklist-container {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(36, 99, 235, 0.2);
+  border-radius: 0;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.checklist-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(36, 99, 235, 0.1);
+}
+
+.checklist-item:last-child {
+  border-bottom: none;
+}
+
+.checklist-item .form-check-input:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+
+/* Response Container */
+.response-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(36, 99, 235, 0.03);
+  border-radius: 0;
+  border: 1px solid rgba(36, 99, 235, 0.1);
+}
+
+.response-container .alert {
+  margin-bottom: 0;
+}
+
+/* Important Notes/Warnings */
+.important-note {
+  background: rgba(255, 193, 7, 0.1);
+  border-left: 4px solid #ffc107;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0;
+}
+
+.important-note strong {
+  color: #856404;
+}
+
+/* Cleanup Section */
+.cleanup-section {
+  background: rgba(220, 53, 69, 0.05);
+  border-left: 4px solid #dc3545;
+}
+
+.cleanup-section h4 {
+  color: #dc3545;
+}
+
+/* API Parameter Block */
+.api-params-block {
+  background: rgba(36, 99, 235, 0.05);
+  border-left: 3px solid var(--bs-primary);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0;
+}
+
+.api-params-block .param-item {
+  margin-bottom: 0.75rem;
+}
+
+.api-params-block .param-name {
+  font-weight: bold;
+  color: var(--bs-primary);
+  font-family: inherit;
+}
+
+.api-params-block .param-type {
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.api-params-block .param-desc {
+  color: #495057;
+  margin-top: 0.25rem;
+}
+
+/* Description Text */
+.description-text {
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Loading States */
+.loading-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--bs-primary);
+}
+
+/* Input Fields Styling */
+.test-input-group {
+  margin-bottom: 1rem;
+}
+
+.test-input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.test-input-group input,
+.test-input-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgba(36, 99, 235, 0.2);
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+  background: white;
+}
+
+.test-input-group input:focus,
+.test-input-group select:focus {
+  outline: none;
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 2px rgba(36, 99, 235, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .demo-section {
+    padding: 1rem;
+  }
+  
+  .test-scenario-card {
+    margin-bottom: 1rem;
+  }
+}
+

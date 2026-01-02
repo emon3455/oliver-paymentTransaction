@@ -1,0 +1,146 @@
+<!--
+  Translation Settings Page
+  Configure supported locales, fallback language, and custom string translations per language
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Document head section -->
+  <head>
+    <!-- Character encoding declaration -->
+    <meta charset="utf-8" />
+    <!-- Viewport meta tag for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Page title displayed in browser tab -->
+    <title>Translation Settings</title>
+    <!-- Bootstrap CSS framework from CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons from CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Main application stylesheet -->
+    <link href="../../assets/css/main.css" rel="stylesheet" />
+    <!-- Component stylesheets -->
+    <link href="../../assets/css/table.css" rel="stylesheet" />
+    <link href="../../assets/css/tabs.css" rel="stylesheet" />
+    <link href="../../assets/css/badge.css" rel="stylesheet" />
+    <link href="../../assets/css/spinner.css" rel="stylesheet" />
+    <link href="../../assets/css/filter-chips.css" rel="stylesheet" />
+    <link href="../../assets/css/carousel.css" rel="stylesheet" />
+    <link href="../../assets/css/notice.css" rel="stylesheet" />
+    <link href="../../assets/css/notes-panel.css" rel="stylesheet" />
+    <!-- Page-specific stylesheet -->
+    <link href="./style.css" rel="stylesheet" />
+    <!-- API Configuration: Configure API endpoints per environment. Set endpoint to use real API, or leave empty to use dummy data. Example: "endpoint": "https://api.example.com/translation-settings" -->
+    <script type="application/json" id="api-config">
+      {
+        "translation-settings": {
+          "prod": {
+            "endpoint": ""
+          },
+          "stage": {
+            "endpoint": ""
+          },
+          "dev": {
+            "endpoint": ""
+          }
+        }
+      }
+    </script>
+  </head>
+  <!-- Document body with section identifier -->
+  <body data-section="translation-settings">
+    <!-- Main application shell container -->
+    <div class="app-shell">
+      <!-- Sidebar navigation container -->
+      <aside class="app-sidebar">
+        <!-- Sidebar header with logo and title -->
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="logo-dot"></div>
+          <strong>Admin</strong>
+        </div>
+        <!-- Sidebar navigation menu (populated by JavaScript) -->
+        <nav id="sidebarNav" class="nav flex-column gap-1"></nav>
+      </aside>
+      <!-- Main content area -->
+      <main class="app-main">
+        <!-- Page header with title and action buttons -->
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <!-- Page title (updated by JavaScript) -->
+          <h1 id="pageTitle" class="app-title h4 mb-0">Translation Settings</h1>
+          <!-- Action buttons container -->
+          <div class="d-flex gap-2">
+            <!-- Environment selector dropdown (prod/stage/dev) -->
+            <select id="envSelect" class="form-select form-select-sm env-pill w-auto"></select>
+            <!-- Filter button - opens filter offcanvas panel -->
+            <button
+              id="filterBtn"
+              class="btn btn-outline-primary btn-sm"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#filterOffcanvas"
+              aria-controls="filterOffcanvas"
+            >
+              <i class="bi bi-funnel"></i>
+            </button>
+            <!-- Refresh button - reloads page data -->
+            <button
+              class="btn btn-primary btn-sm"
+              onclick="document.body.dispatchEvent(new CustomEvent('section:refresh'));"
+            >
+              Refresh
+            </button>
+          </div>
+        </div>
+        <!-- Page content container (populated by JavaScript) -->
+        <div id="pageContent" class="page-content"></div>
+        <!-- Notes section -->
+        <div class="card notes-below">
+          <div class="card-body">
+            <p class="mb-0">
+              Configure supported locales and fallback language. Manage custom string translations
+              per language.
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bootstrap JavaScript bundle from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core JavaScript modules -->
+    <!-- Utility functions -->
+    <script src="../../assets/js/core/utils.js"></script>
+    <!-- State management -->
+    <script src="../../assets/js/core/state.js"></script>
+    <!-- Configuration data -->
+    <script src="../../assets/js/core/config.js"></script>
+    <!-- Services -->
+    <!-- API service for data fetching -->
+    <script src="../../assets/js/services/api-service.js"></script>
+    <!-- UI Components -->
+    <!-- Sidebar navigation component -->
+    <script src="../../assets/js/ui/sidebar.js"></script>
+    <!-- Environment selector component -->
+    <script src="../../assets/js/ui/env-selector.js"></script>
+    <!-- Filter panel component -->
+    <script src="../../assets/js/ui/filter-panel.js"></script>
+    <!-- Modal viewer component -->
+    <script src="../../assets/js/ui/modal-viewer.js"></script>
+    <!-- Notes panel component -->
+    <script src="../../assets/js/ui/notes-panel.js"></script>
+    <!-- Tabs component -->
+    <script src="../../assets/js/ui/tabs.js"></script>
+    <!-- Table component -->
+    <script src="../../assets/js/ui/table.js"></script>
+    <!-- Main -->
+    <!-- Main admin panel orchestrator -->
+    <script src="../../assets/js/admin.js"></script>
+    <!-- Page-specific -->
+    <!-- Page-specific JavaScript logic -->
+    <script src="./script.js"></script>
+  </body>
+</html>

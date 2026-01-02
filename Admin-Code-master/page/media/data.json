@@ -1,0 +1,12 @@
+[
+  {
+    "id": 301,
+    "title": "Hero Image",
+    "type": "Image"
+  },
+  {
+    "id": 302,
+    "title": "Launch Video",
+    "type": "Video"
+  }
+]
