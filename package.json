@@ -7,7 +7,9 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:legacy": "node test/crud-test.js"
+    "test:legacy": "node test/crud-test.js",
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "keywords": [
     "payment",
@@ -19,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.3.1",
+    "express": "^5.2.1",
     "luxon": "^3.4.4",
     "pg": "^8.11.3"
   },

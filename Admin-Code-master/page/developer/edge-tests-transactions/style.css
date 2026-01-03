@@ -1,3 +1,75 @@
-/* Page-specific styles for Edge Tests - Products Class */
-/* Most styles are inherited from shared edge-tests-shared.css */
+/* Edge Tests - Payment Transactions Registry */
+/* Most styles inherited from shared edge-tests-shared.css */
 
+/* Transaction Status Badges */
+.status-completed {
+  background: #10b981 !important;
+  color: white;
+}
+
+.status-pending {
+  background: #f59e0b !important;
+  color: white;
+}
+
+.status-failed {
+  background: #ef4444 !important;
+  color: white;
+}
+
+.status-refunded {
+  background: #8b5cf6 !important;
+  color: white;
+}
+
+/* Direction Badges */
+.direction-purchase {
+  background: #3b82f6 !important;
+  color: white;
+}
+
+.direction-refund {
+  background: #ef4444 !important;
+  color: white;
+}
+
+.direction-payout {
+  background: #10b981 !important;
+  color: white;
+}
+
+.direction-adjustment {
+  background: #f59e0b !important;
+  color: white;
+}
+
+/* Amount Display */
+.amount-display {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.amount-positive {
+  color: #10b981;
+}
+
+.amount-negative {
+  color: #ef4444;
+}
+
+/* Cleanup Section Styling */
+#cleanup-section {
+  border: 2px dashed #ef4444;
+  padding: 2rem;
+  border-radius: 12px;
+  background: #fef2f2;
+}
+
+#cleanup-section h3 {
+  border-bottom-color: #ef4444;
+}
+
+#cleanup-section h3 i {
+  color: #ef4444;
+}

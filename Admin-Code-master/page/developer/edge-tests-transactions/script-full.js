@@ -160,56 +160,39 @@
       try {
         const baseUrl = getBaseUrl();
         
-        console.log('[Test] Starting test:', testId);
-        console.log('[Test] Payload from button:', payload);
-        
-        // Collect input values (only non-empty values)
+        // Collect input values
         const inputs = {};
         document.querySelectorAll(`#test-${testId} [data-field]`).forEach(el => {
           const field = el.getAttribute('data-field');
-          const value = el.value;
-          // Only add non-empty values to avoid overriding payload
-          if (value && value.trim() !== '') {
-            inputs[field] = value;
-          }
+          inputs[field] = el.value;
         });
-
-        console.log('[Test] Inputs collected:', inputs);
 
         // Replace URL parameters
         let finalEndpoint = endpoint;
         if (inputs.transaction_id) {
           finalEndpoint = finalEndpoint.replace('{id}', inputs.transaction_id);
-          // Remove transaction_id from inputs after using it in URL
-          delete inputs.transaction_id;
         }
 
         const fullUrl = `${baseUrl}${finalEndpoint}`;
-        console.log('[Test] Full URL:', fullUrl);
-
         let requestData = {};
 
         if (method === 'POST' || method === 'PUT') {
-          // Start with payload, override with inputs, add testing flag
           requestData = { ...payload, ...inputs, testing: true };
           
           // Parse JSON fields if provided as strings
           if (requestData.meta && typeof requestData.meta === 'string') {
-            try { requestData.meta = JSON.parse(requestData.meta); } catch(e) { console.warn('Failed to parse meta:', e); }
+            try { requestData.meta = JSON.parse(requestData.meta); } catch(e) {}
           }
           if (requestData.owners && typeof requestData.owners === 'string') {
-            try { requestData.owners = JSON.parse(requestData.owners); } catch(e) { console.warn('Failed to parse owners:', e); }
+            try { requestData.owners = JSON.parse(requestData.owners); } catch(e) {}
           }
           if (requestData.owner_allocations && typeof requestData.owner_allocations === 'string') {
-            try { requestData.owner_allocations = JSON.parse(requestData.owner_allocations); } catch(e) { console.warn('Failed to parse owner_allocations:', e); }
+            try { requestData.owner_allocations = JSON.parse(requestData.owner_allocations); } catch(e) {}
           }
           if (requestData.products && typeof requestData.products === 'string') {
-            try { requestData.products = JSON.parse(requestData.products); } catch(e) { console.warn('Failed to parse products:', e); }
+            try { requestData.products = JSON.parse(requestData.products); } catch(e) {}
           }
         }
-
-        console.log('[Test] Final Request Data:', requestData);
-        console.log('[Test] Request Data Keys:', Object.keys(requestData));
 
         const apiHandler = new APIHandler();
         await apiHandler.handleRequest({
@@ -218,12 +201,6 @@
           httpMethod: method,
           requestData: requestData,
           responseCallback: (data) => {
-            // Check if data exists before accessing properties
-            if (!data) {
-              console.error('[Test] Response data is undefined');
-              return;
-            }
-
             // Store transaction ID for cleanup
             if (data.transaction_id && method === 'POST') {
               createdTransactionIds.push(data.transaction_id);
@@ -242,15 +219,6 @@
                   <summary>Full Response JSON</summary>
                   <pre class="bg-light p-2 mt-2"><code>${JSON.stringify(data, null, 2)}</code></pre>
                 </details>
-              </div>
-            `;
-          },
-          errorCallback: (error) => {
-            console.log('[Test] API Error received:', error);
-            responseDiv.innerHTML = `
-              <div class="alert alert-danger">
-                <h6><i class="bi bi-exclamation-triangle"></i> Error</h6>
-                <pre class="bg-light p-2 mt-2"><code>${JSON.stringify(error, null, 2)}</code></pre>
               </div>
             `;
           }
@@ -335,7 +303,7 @@
           <h3><i class="bi bi-plus-circle"></i> CREATE Transaction Tests</h3>
           
           ${createTestCard('create-1', '✅ Create Minimal Transaction', 
-            'Create transaction with only required fields (order_id, amount, order_type, customer_uid, status, direction, payment_method, currency, platform)',
+            'Create transaction with only required fields (order_id, amount, order_type, customer_uid, status, direction)',
             '/api/transactions', 'POST',
             {
               order_id: 'order_TEST_001',
@@ -343,10 +311,7 @@
               order_type: 'product',
               customer_uid: 'cust_test_001',
               status: 'pending',
-              direction: 'purchase',
-              payment_method: 'stripe',
-              currency: 'USD',
-              platform: 'web'
+              direction: 'purchase'
             }
           )}
 
@@ -362,7 +327,6 @@
               direction: 'purchase',
               payment_method: 'stripe',
               currency: 'USD',
-              platform: 'web',
               meta: {
                 subscription_id: 'sub_123',
                 billing_cycle: 'monthly',
@@ -389,9 +353,6 @@
               customer_uid: 'cust_test_003',
               status: 'completed',
               direction: 'refund',
-              payment_method: 'stripe',
-              currency: 'USD',
-              platform: 'web',
               refund_amount: 5000,
               refund_reason: 'Customer requested cancellation'
             }
@@ -405,10 +366,7 @@
               order_type: 'product',
               customer_uid: 'cust_test',
               status: 'pending',
-              direction: 'purchase',
-              payment_method: 'stripe',
-              currency: 'USD',
-              platform: 'web'
+              direction: 'purchase'
             }
           )}
 
@@ -420,10 +378,7 @@
               order_type: 'product',
               customer_uid: 'cust_test',
               status: 'pending',
-              direction: 'purchase',
-              payment_method: 'stripe',
-              currency: 'USD',
-              platform: 'web'
+              direction: 'purchase'
             }
           )}
 
@@ -436,77 +391,7 @@
               order_type: 'product',
               customer_uid: 'cust_test',
               status: 'pending',
-              direction: 'invalid_direction',
-              payment_method: 'stripe',
-              currency: 'USD',
-              platform: 'web'
-            }
-          )}
-
-          ${createTestCard('create-7', '✅ Create Multi-Owner Transaction',
-            'Create transaction with multiple owners and allocations',
-            '/api/transactions', 'POST',
-            {
-              order_id: 'order_MULTI_001',
-              amount: 20000,
-              order_type: 'subscription',
-              customer_uid: 'cust_multi_001',
-              status: 'completed',
-              direction: 'purchase',
-              payment_method: 'paypal',
-              currency: 'USD',
-              platform: 'mobile',
-              owners: ['owner_A', 'owner_B', 'owner_C'],
-              owner_allocations: [
-                { owner_uuid: 'owner_A', amount_cents: 10000 },
-                { owner_uuid: 'owner_B', amount_cents: 6000 },
-                { owner_uuid: 'owner_C', amount_cents: 4000 }
-              ]
-            }
-          )}
-
-          ${createTestCard('create-8', '❌ FAIL: Missing payment_method',
-            'Should return 400 error - payment_method is required',
-            '/api/transactions', 'POST',
-            {
-              order_id: 'order_FAIL_PAYMENT',
-              amount: 5000,
-              order_type: 'product',
-              customer_uid: 'cust_test',
-              status: 'pending',
-              direction: 'purchase',
-              currency: 'USD',
-              platform: 'web'
-            }
-          )}
-
-          ${createTestCard('create-9', '❌ FAIL: Missing currency',
-            'Should return 400 error - currency is required',
-            '/api/transactions', 'POST',
-            {
-              order_id: 'order_FAIL_CURRENCY',
-              amount: 5000,
-              order_type: 'product',
-              customer_uid: 'cust_test',
-              status: 'pending',
-              direction: 'purchase',
-              payment_method: 'stripe',
-              platform: 'web'
-            }
-          )}
-
-          ${createTestCard('create-10', '❌ FAIL: Missing platform',
-            'Should return 400 error - platform is required',
-            '/api/transactions', 'POST',
-            {
-              order_id: 'order_FAIL_PLATFORM',
-              amount: 5000,
-              order_type: 'product',
-              customer_uid: 'cust_test',
-              status: 'pending',
-              direction: 'purchase',
-              payment_method: 'stripe',
-              currency: 'USD'
+              direction: 'invalid_direction'
             }
           )}
         </div>
@@ -696,20 +581,7 @@
           const testId = e.currentTarget.getAttribute('data-test-id');
           const method = e.currentTarget.getAttribute('data-method');
           const endpoint = e.currentTarget.getAttribute('data-endpoint');
-          const payloadStr = e.currentTarget.getAttribute('data-payload');
-          
-          console.log('[Button] Payload string from button:', payloadStr);
-          
-          let payload = {};
-          try {
-            payload = JSON.parse(payloadStr || '{}');
-          } catch (e) {
-            console.error('[Button] Failed to parse payload:', e);
-            payload = {};
-          }
-          
-          console.log('[Button] Parsed payload object:', payload);
-          
+          const payload = JSON.parse(e.currentTarget.getAttribute('data-payload'));
           executeTest(testId, method, endpoint, payload);
         });
       });

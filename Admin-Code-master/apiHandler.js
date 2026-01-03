@@ -51,6 +51,7 @@ class APIHandler {
             httpMethod,
             requestData,
             responseCallback,
+            errorCallback,
             popupIdToOpen,
             targetContainer
         } = apiParams;
@@ -71,9 +72,23 @@ class APIHandler {
             let url = this.constructUrl(apiBaseUrl, queryParams, httpMethod);
 
             // Send the API request and await the response
+            const headers = {};
+            let body = null;
+            
+            if (httpMethod === 'POST' || httpMethod === 'PUT') {
+                if (requestData instanceof FormData) {
+                    body = requestData;
+                    // Don't set Content-Type for FormData - browser will set it with boundary
+                } else {
+                    body = JSON.stringify(requestData);
+                    headers['Content-Type'] = 'application/json';
+                }
+            }
+            
             const response = await fetch(url, {
                 method: httpMethod,
-                body: httpMethod === 'POST' ? (requestData instanceof FormData ? requestData : JSON.stringify(requestData)) : null
+                headers,
+                body
             });
 
             console.log("-> APIHandler: API Response Status", ["data = " + response.status, "filename = api.js", "reference_code = Cd12"]);
@@ -81,22 +96,25 @@ class APIHandler {
             // Process the API response
             responseData = await this.processResponse(response, apiParams);
 
-            // Handle the response based on the provided parameters
-            if (targetContainer) {
-                console.log("-> APIHandler: Populating target container with API data", ["data = " + targetContainer, "filename = api.js", "reference_code = Zf12"]);
+            // Only call success callbacks if we got actual response data
+            if (responseData !== null) {
+                // Handle the response based on the provided parameters
+                if (targetContainer) {
+                    console.log("-> APIHandler: Populating target container with API data", ["data = " + targetContainer, "filename = api.js", "reference_code = Zf12"]);
 
-                // Populate the target container with the API response data
-                this.populateContentWithApiData(targetContainer, responseData, queryParams?.per_page);
-            } else if (popupIdToOpen) {
-                console.log("-> APIHandler: Populating popup container with API data", ["data = " + popupIdToOpen, "filename = api.js", "reference_code = Xz56"]);
+                    // Populate the target container with the API response data
+                    this.populateContentWithApiData(targetContainer, responseData, queryParams?.per_page);
+                } else if (popupIdToOpen) {
+                    console.log("-> APIHandler: Populating popup container with API data", ["data = " + popupIdToOpen, "filename = api.js", "reference_code = Xz56"]);
 
-                // Populate the popup container with the API response data
-                this.populatePopupContent(popupIdToOpen, responseData);
-            } else if (responseCallback) {
-                console.log("-> APIHandler: Calling response callback function", ["data = " + responseCallback, "filename = api.js", "reference_code = Lx90"]);
-    
-                // Call the response callback function with the response data
-                responseCallback(responseData);
+                    // Populate the popup container with the API response data
+                    this.populatePopupContent(popupIdToOpen, responseData);
+                } else if (responseCallback) {
+                    console.log("-> APIHandler: Calling response callback function", ["data = " + responseCallback, "filename = api.js", "reference_code = Lx90"]);
+        
+                    // Call the response callback function with the response data
+                    responseCallback(responseData);
+                }
             }
 
             // Return the response data if successful
@@ -104,8 +122,17 @@ class APIHandler {
 
         } catch (error) {
             console.error("-> APIHandler: Error occurred", ["data = " + error.message, "filename = api.js", "reference_code = Za34"]);
+            
+            // Call errorCallback if provided
+            if (errorCallback) {
+                console.log("-> APIHandler: Calling error callback from catch", ["data = " + error.message, "filename = api.js", "reference_code = Err02"]);
+                errorCallback({ error: error.message, message: error.message });
+                return; // Don't throw, just return after calling callback
+            }
+            
             // Dispatch an error event if an error occurs during the API request
             this.dispatchErrorEvent(apiParams, error);
+            throw error; // Re-throw if no errorCallback
         }
     }
 
@@ -217,10 +244,17 @@ class APIHandler {
         } else {
             console.error("-> APIHandler: Error in API Response Status", ["data = " + response.status, "filename = api.js", "reference_code = Wx12"]);
     
+            // Call errorCallback if provided and return early
+            if (apiParams.errorCallback) {
+                console.log("-> APIHandler: Calling error callback", ["data = " + JSON.stringify(responseData), "filename = api.js", "reference_code = Err01"]);
+                apiParams.errorCallback(responseData);
+                return null; // Return null instead of throwing
+            }
+            
             // Dispatch an error event with the response status
             this.dispatchErrorEvent(apiParams, new Error(`Request failed with status ${response.status}`));
     
-            // Throw an error with the response status
+            // Throw an error with the response status only if no errorCallback
             throw new Error(`Request failed with status ${response.status}`);
         }
     }

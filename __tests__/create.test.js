@@ -218,10 +218,10 @@ describe('TransactionRegistry - CREATE Tests', () => {
 
     await expect(TransactionRegistry.createTransaction(txn)).rejects.toThrow();
 
-    // Verify ErrorHandler.addError was called
+    // Verify ErrorHandler.addError was called with direction error
     const errors = ErrorHandler.getErrors();
     expect(errors.length).toBeGreaterThan(0);
-    expect(errors[0].message).toContain('Failed to create transaction');
+    expect(ErrorHandler.hasError('direction')).toBe(true);
 
     // Verify transaction was NOT created
     const dbData = mockDb.getAllData('transactions');

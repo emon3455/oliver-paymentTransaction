@@ -104,9 +104,11 @@ describe('TransactionRegistry - UPDATE Tests', () => {
     expect(result.meta).toBeDefined();
     expect(result.meta.updated_field).toBe('new_value');
 
+    // Check DB storage (meta stored as JSON string)
     const dbData = mockDb.getAllData('transactions');
     expect(dbData[0].meta).toBeDefined();
-    expect(dbData[0].meta.updated_field).toBe('new_value');
+    const parsedMeta = typeof dbData[0].meta === 'string' ? JSON.parse(dbData[0].meta) : dbData[0].meta;
+    expect(parsedMeta.updated_field).toBe('new_value');
   });
 
   // Test 16: Update products
@@ -125,10 +127,13 @@ describe('TransactionRegistry - UPDATE Tests', () => {
     expect(result.products.length).toBe(1);
     expect(result.products[0].product_id).toBe('prod_2');
 
+    // Check DB storage (products stored as JSON string)
     const dbData = mockDb.getAllData('transactions');
-    expect(Array.isArray(dbData[0].products)).toBe(true);
-    expect(dbData[0].products.length).toBe(1);
-    expect(dbData[0].products[0].product_id).toBe('prod_2');
+    expect(dbData[0].products).toBeDefined();
+    const parsedProducts = typeof dbData[0].products === 'string' ? JSON.parse(dbData[0].products) : dbData[0].products;
+    expect(Array.isArray(parsedProducts)).toBe(true);
+    expect(parsedProducts.length).toBe(1);
+    expect(parsedProducts[0].product_id).toBe('prod_2');
   });
 
   // Test 17: Update with explicit null (unset)
