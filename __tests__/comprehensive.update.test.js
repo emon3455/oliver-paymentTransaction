@@ -3,9 +3,17 @@ const PostgreSQL = require('../__mocks__/PostgreSQL');
 const Logger = require('../__mocks__/Logger');
 const ErrorHandler = require('../__mocks__/ErrorHandler');
 
-jest.mock('../PostgreSQL');
-jest.mock('../Logger');
-jest.mock('../ErrorHandler');
+jest.mock('../PostgreSQL', () => {
+  return require('../__mocks__/PostgreSQL');
+});
+
+jest.mock('../Logger', () => {
+  return require('../__mocks__/Logger');
+});
+
+jest.mock('../ErrorHandler', () => {
+  return require('../__mocks__/ErrorHandler');
+});
 
 describe('TransactionRegistry - updateTransaction - COMPREHENSIVE', () => {
   let mockDb;
@@ -349,7 +357,20 @@ describe('TransactionRegistry - updateTransaction - COMPREHENSIVE', () => {
     });
 
     test('FAIL_updateTransaction_10: DB update returns no row', async () => {
-      mockDb.update = jest.fn().mockResolvedValue(null);
+      // Mock transaction to make UPDATE return no rows
+      mockDb.transaction = jest.fn(async (schema, callback) => {
+        const mockQueryFn = async (sql) => {
+          if (sql.includes('SELECT') && sql.includes('FOR UPDATE')) {
+            // Return existing record for SELECT
+            return { rows: [{ transaction_id: 'txn-fail-010', status: 'pending' }] };
+          } else if (sql.includes('UPDATE')) {
+            // Return no rows for UPDATE
+            return { rows: [] };
+          }
+          return { rows: [] };
+        };
+        return await callback({ query: mockQueryFn });
+      });
 
       const txnData = {
         transaction_id: 'txn-fail-010',

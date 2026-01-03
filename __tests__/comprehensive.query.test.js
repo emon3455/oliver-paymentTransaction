@@ -3,9 +3,17 @@ const PostgreSQL = require('../__mocks__/PostgreSQL');
 const Logger = require('../__mocks__/Logger');
 const ErrorHandler = require('../__mocks__/ErrorHandler');
 
-jest.mock('../PostgreSQL');
-jest.mock('../Logger');
-jest.mock('../ErrorHandler');
+jest.mock('../PostgreSQL', () => {
+  return require('../__mocks__/PostgreSQL');
+});
+
+jest.mock('../Logger', () => {
+  return require('../__mocks__/Logger');
+});
+
+jest.mock('../ErrorHandler', () => {
+  return require('../__mocks__/ErrorHandler');
+});
 
 describe('TransactionRegistry - query - COMPREHENSIVE', () => {
   let mockDb;
@@ -187,18 +195,26 @@ describe('TransactionRegistry - query - COMPREHENSIVE', () => {
     });
 
     test('FAIL_query_6: Count query throws error', async () => {
-      mockDb.getRow = jest.fn().mockRejectedValue(new Error('Count query failed'));
+      const db = TransactionRegistry._getDbInstance();
+      db.getRow = jest.fn().mockRejectedValue(new Error('Count query failed'));
 
-      await expect(TransactionRegistry.query())
-        .rejects.toThrow('Count query failed');
+      const result = await TransactionRegistry.query();
+      
+      expect(result).toEqual({ rows: [], total: 0 });
+      expect(ErrorHandler.getErrors().length).toBeGreaterThan(0);
+      expect(ErrorHandler.hasError('Failed to query transactions')).toBe(true);
     });
 
     test('FAIL_query_7: Data query throws error', async () => {
-      mockDb.getRow = jest.fn().mockResolvedValue({ total: 10 });
-      mockDb.query = jest.fn().mockRejectedValue(new Error('Data query failed'));
+      const db = TransactionRegistry._getDbInstance();
+      db.getRow = jest.fn().mockResolvedValue({ total: 10 });
+      db.query = jest.fn().mockRejectedValue(new Error('Data query failed'));
 
-      await expect(TransactionRegistry.query())
-        .rejects.toThrow('Data query failed');
+      const result = await TransactionRegistry.query();
+      
+      expect(result).toEqual({ rows: [], total: 0 });
+      expect(ErrorHandler.getErrors().length).toBeGreaterThan(0);
+      expect(ErrorHandler.hasError('Failed to query transactions')).toBe(true);
     });
   });
 });

@@ -23,8 +23,10 @@ class PostgreSQLMock {
         deleted_at: null,
         is_deleted: false
       };
+      // Store data as-is (JSON strings for JSONB fields)
       this.data.transactions.push(record);
-      return { transaction_id, ...record };
+      // Return with parsed JSONB fields (mimicking PostgreSQL driver behavior)
+      return { transaction_id, ...this._parseJsonFields(record) };
     }
     throw new Error(`Table ${table} not supported in mock`);
   }
@@ -94,7 +96,7 @@ class PostgreSQLMock {
         const record = this.data.transactions.find(
           t => t.transaction_id === txnId && !t.is_deleted
         );
-        return { rows: record ? [record] : [] };
+        return { rows: record ? [this._parseJsonFields(record)] : [] };
       } else if (sql.includes('UPDATE')) {
         // UPDATE ... RETURNING *
         const txnId = params[0];
@@ -115,28 +117,22 @@ class PostgreSQLMock {
           const setClause = setMatch[1];
           const fieldUpdates = setClause.split(',').map(s => s.trim());
           
-          fieldUpdates.forEach((fieldExpr, idx) => {
-            const fieldMatch = fieldExpr.match(/"([^"]+)"=\$/);
-            if (fieldMatch && updateValues[idx] !== undefined) {
+          fieldUpdates.forEach((fieldExpr) => {
+            // Match "fieldName"=$2 or fieldName=$2
+            const fieldMatch = fieldExpr.match(/"?(\w+)"?\s*=\s*\$(\d+)/);
+            if (fieldMatch) {
               const fieldName = fieldMatch[1];
-              let value = updateValues[idx];
+              const paramIndex = parseInt(fieldMatch[2], 10);
+              const value = params[paramIndex - 1]; // $1 is params[0]
               
-              // Parse JSON strings for JSONB fields
-              if ((fieldName === 'meta' || fieldName === 'products') && typeof value === 'string') {
-                try {
-                  value = JSON.parse(value);
-                } catch (e) {
-                  // Keep as-is if not valid JSON
-                }
-              }
-              
+              // Store as-is (JSON strings for JSONB fields)
               this.data.transactions[index][fieldName] = value;
             }
           });
         }
         
         this.data.transactions[index].updated_at = now;
-        return { rows: [this.data.transactions[index]] };
+        return { rows: [this._parseJsonFields(this.data.transactions[index])] };
       }
       
       return { rows: [] };
@@ -182,8 +178,17 @@ class PostgreSQLMock {
         const ownersJson = params[paramIndex++];
         const ownerIds = JSON.parse(ownersJson);
         results = results.filter(t => {
-          if (!Array.isArray(t.owners)) return false;
-          return ownerIds.some(ownerId => t.owners.includes(ownerId));
+          let owners = t.owners;
+          // Parse if it's a string
+          if (typeof owners === 'string') {
+            try {
+              owners = JSON.parse(owners);
+            } catch (e) {
+              return false;
+            }
+          }
+          if (!Array.isArray(owners)) return false;
+          return ownerIds.some(ownerId => owners.includes(ownerId));
         });
       }
       
@@ -221,9 +226,29 @@ class PostgreSQLMock {
       const record = this.data.transactions.find(
         t => t.transaction_id === txnId && !t.is_deleted
       );
-      return record || null;
+      if (record) {
+        // Mimic PostgreSQL JSONB auto-parsing
+        return this._parseJsonFields(record);
+      }
+      return null;
     }
     return null;
+  }
+
+  // Helper to parse JSON fields like PostgreSQL does for JSONB columns
+  _parseJsonFields(record) {
+    const parsed = { ...record };
+    const jsonFields = ['meta', 'owners', 'owner_allocations', 'products'];
+    jsonFields.forEach(field => {
+      if (parsed[field] && typeof parsed[field] === 'string') {
+        try {
+          parsed[field] = JSON.parse(parsed[field]);
+        } catch (e) {
+          // Leave as-is if parse fails
+        }
+      }
+    });
+    return parsed;
   }
 
   async select(schema, table, conditions = {}, options = {}) {
@@ -260,6 +285,53 @@ class PostgreSQLMock {
   }
 
   async query(schema, sql, params) {
+    // Handle UPDATE statements
+    if (sql.includes('UPDATE transactions SET')) {
+      // Parse SET clause to extract column assignments
+      const setMatch = sql.match(/SET\s+(.+?)\s+WHERE/);
+      if (!setMatch) {
+        throw new Error('Invalid UPDATE SQL');
+      }
+      
+      const setClauses = setMatch[1].split(',').map(s => s.trim());
+      const updates = {};
+      
+      for (const clause of setClauses) {
+        const columnMatch = clause.match(/"?(\w+)"?\s*=\s*\$(\d+)/);
+        if (columnMatch) {
+          const columnName = columnMatch[1];
+          const paramIndex = parseInt(columnMatch[2], 10) - 1; // Convert $2 to index 1
+          // Store as-is (JSON strings for JSONB fields)
+          updates[columnName] = params[paramIndex];
+        }
+      }
+      
+      // Extract transaction_id - it's $1, so params[0]
+      const txnId = params[0];
+      const index = this.data.transactions.findIndex(
+        t => t.transaction_id === txnId && !t.is_deleted
+      );
+      
+      if (index === -1) {
+        return { rows: [], rowCount: 0 };
+      }
+      
+      const now = new Date().toISOString();
+      this.data.transactions[index] = {
+        ...this.data.transactions[index],
+        ...updates,
+        updated_at: now
+      };
+      
+      // Return updated row if RETURNING * is present
+      if (sql.includes('RETURNING')) {
+        const parsedRow = this._parseJsonFields(this.data.transactions[index]);
+        return { rows: [parsedRow], rowCount: 1 };
+      }
+      
+      return { rowCount: 1 };
+    }
+    
     // Mock SQL query execution for complex queries
     let results = this.data.transactions.filter(t => !t.is_deleted);
     
@@ -283,8 +355,17 @@ class PostgreSQLMock {
       const ownersJson = params[paramIndex++];
       const ownerIds = JSON.parse(ownersJson);
       results = results.filter(t => {
-        if (!Array.isArray(t.owners)) return false;
-        return ownerIds.some(ownerId => t.owners.includes(ownerId));
+        let owners = t.owners;
+        // Parse if it's a string
+        if (typeof owners === 'string') {
+          try {
+            owners = JSON.parse(owners);
+          } catch (e) {
+            return false;
+          }
+        }
+        if (!Array.isArray(owners)) return false;
+        return ownerIds.some(ownerId => owners.includes(ownerId));
       });
     }
     
@@ -307,13 +388,17 @@ class PostgreSQLMock {
     }
     
     // Date range filters
-    if (sql.includes('created_at >=') && params[paramIndex]) {
-      const startDate = new Date(params[paramIndex++]);
+    const startDateMatch = sql.match(/created_at\s*>=\s*\$(\d+)/);
+    if (startDateMatch) {
+      const paramIdx = parseInt(startDateMatch[1], 10) - 1;
+      const startDate = new Date(params[paramIdx]);
       results = results.filter(t => new Date(t.created_at) >= startDate);
     }
     
-    if (sql.includes('created_at <=') && params[paramIndex]) {
-      const endDate = new Date(params[paramIndex++]);
+    const endDateMatch = sql.match(/created_at\s*<=\s*\$(\d+)/);
+    if (endDateMatch) {
+      const paramIdx = parseInt(endDateMatch[1], 10) - 1;
+      const endDate = new Date(params[paramIdx]);
       results = results.filter(t => new Date(t.created_at) <= endDate);
     }
     
@@ -335,7 +420,9 @@ class PostgreSQLMock {
     }
     
     const paginatedResults = results.slice(offset, offset + limit);
-    return { rows: paginatedResults, rowCount: paginatedResults.length };
+    // Mimic PostgreSQL JSONB auto-parsing for all rows
+    const parsedResults = paginatedResults.map(record => this._parseJsonFields(record));
+    return { rows: parsedResults, rowCount: parsedResults.length };
   }
 
   // Reset mock data between tests

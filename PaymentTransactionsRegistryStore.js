@@ -81,15 +81,15 @@ class TransactionRegistry {
         platform: cleaned.platform,
         ip_address: cleaned.ip_address,
         parent_transaction_id: cleaned.parent_transaction_id,
-        meta: safeMeta,
+        meta: safeMeta ? JSON.stringify(safeMeta) : null,
         user_agent: cleaned.user_agent,
         refund_amount: cleaned.refund_amount,
         refund_reason: cleaned.refund_reason,
         dispute_id: cleaned.dispute_id,
         write_status: cleaned.write_status,
-        owners: ownersPayload,
-        owner_allocations: ownerAllocationsPayload,
-        products: productsPayload,
+        owners: ownersPayload ? JSON.stringify(ownersPayload) : null,
+        owner_allocations: ownerAllocationsPayload ? JSON.stringify(ownerAllocationsPayload) : null,
+        products: productsPayload ? JSON.stringify(productsPayload) : null,
         is_deleted: false,
       };
 
@@ -648,6 +648,21 @@ class TransactionRegistry {
           action: "transactionUpdate",
         });
       }
+      
+      // Parse owner_allocations to array for consistent response
+      if (updated && updated.owner_allocations) {
+        if (typeof updated.owner_allocations === 'string') {
+          try {
+            updated.owner_allocations = JSON.parse(updated.owner_allocations);
+          } catch (err) {
+            Logger.debugLog("[TransactionRegistry] updateTransaction parse owner_allocations failed", {
+              transaction_id: sanitizedTransactionId,
+              error: String(err),
+            });
+          }
+        }
+      }
+      
       return updated || null;
     } catch (err) {
       Logger.debugLog("[TransactionRegistry] updateTransaction raw error", {
@@ -740,6 +755,16 @@ class TransactionRegistry {
   static async deleteTransaction(transaction_id) {
     let sanitizedTransactionId = null;
     try {
+      if (!transaction_id) {
+        throw new TypeError('deleteTransaction(): transaction_id is required');
+      }
+      if (typeof transaction_id !== 'string') {
+        ErrorHandler.addError('deleteTransaction(): transaction_id must be a string', {
+          field: 'transaction_id',
+          type: typeof transaction_id,
+        });
+        throw new TypeError('deleteTransaction(): transaction_id must be a string');
+      }
       ({
         transaction_id: sanitizedTransactionId,
       } = SafeUtils.sanitizeValidate({
@@ -858,6 +883,9 @@ class TransactionRegistry {
   static async getTransaction(transaction_id) {
     let sanitizedTransactionId = null;
     try {
+      if (!transaction_id) {
+        throw new TypeError('getTransaction(): transaction_id is required');
+      }
       ({
         transaction_id: sanitizedTransactionId,
       } = SafeUtils.sanitizeValidate({
@@ -984,24 +1012,53 @@ class TransactionRegistry {
       if (
         !DateTime.isValidDate(safeDateStartInput, "yyyy-MM-dd")
       ) {
+        ErrorHandler.addError("query(): Invalid dateStart format", {
+          field: "dateStart",
+          value: safeDateStartInput,
+        });
         throw new Error("Invalid dateStart");
       }
       startWindow = DateTime.getStartOfDay(safeDateStartInput);
-      if (startWindow === false)
+      if (startWindow === false) {
+        ErrorHandler.addError("query(): Invalid dateStart window", {
+          field: "dateStart",
+        });
         throw new Error("Invalid dateStart window");
+      }
     }
     if (SafeUtils.hasValue(normalizedFilters.dateEnd)) {
       safeDateEndInput = SafeUtils.sanitizeTextField(normalizedFilters.dateEnd);
       if (!DateTime.isValidDate(safeDateEndInput, "yyyy-MM-dd")) {
+        ErrorHandler.addError("query(): Invalid dateEnd format", {
+          field: "dateEnd",
+          value: safeDateEndInput,
+        });
         throw new Error("Invalid dateEnd");
       }
       endWindow = DateTime.getEndOfDay(safeDateEndInput);
-      if (endWindow === false) throw new Error("Invalid dateEnd window");
+      if (endWindow === false) {
+        ErrorHandler.addError("query(): Invalid dateEnd window", {
+          field: "dateEnd",
+        });
+        throw new Error("Invalid dateEnd window");
+      }
     }
     if (startWindow && endWindow) {
       const deltaSeconds = DateTime.diffInSeconds(startWindow, endWindow);
-      if (deltaSeconds === false) throw new Error("Invalid date range");
-      if (deltaSeconds < 0) throw new Error("dateStart must be <= dateEnd");
+      if (deltaSeconds === false) {
+        ErrorHandler.addError("query(): Invalid date range", {
+          field: "dateRange",
+        });
+        throw new Error("Invalid date range");
+      }
+      if (deltaSeconds < 0) {
+        ErrorHandler.addError("query(): dateStart must be <= dateEnd", {
+          field: "dateRange",
+          dateStart: safeDateStartInput,
+          dateEnd: safeDateEndInput,
+        });
+        throw new Error("dateStart must be <= dateEnd");
+      }
     }
 
     const transactionIdCandidate =
@@ -1013,6 +1070,16 @@ class TransactionRegistry {
           typeof sanitized === "string" ? sanitized.trim() : sanitized;
         if (!SafeUtils.hasValue(normalized))
           throw new Error("query(): Missing transactionId");
+        
+        // Detect SQL injection attempts
+        if (normalized.includes(';') || normalized.includes('--') || normalized.includes('DROP')) {
+          ErrorHandler.addError("query(): Invalid transaction_id - potential SQL injection", {
+            field: "transaction_id",
+            value: normalized.substring(0, 50),
+          });
+          throw new Error("query(): Invalid transaction_id format");
+        }
+        
         sanitizedTransactionId = normalized;
       }
 
@@ -1053,7 +1120,26 @@ class TransactionRegistry {
     for (const candidate of ownerFields) {
       if (SafeUtils.hasValue(candidate)) ownerCandidates.push(candidate);
     }
-    if (Array.isArray(normalizedFilters.ownerIds)) {
+    
+    // Validate ownerIds - must be array if provided
+    if (SafeUtils.hasValue(normalizedFilters.ownerIds)) {
+      if (!Array.isArray(normalizedFilters.ownerIds)) {
+        ErrorHandler.addError("query(): ownerIds must be an array", {
+          field: "ownerIds",
+          type: typeof normalizedFilters.ownerIds,
+        });
+        throw new Error("query(): ownerIds must be an array");
+      }
+      // Validate ownerIds array is serializable before using it
+      try {
+        JSON.stringify(normalizedFilters.ownerIds);
+      } catch (err) {
+        ErrorHandler.addError("query(): OwnerIds not serializable", {
+          field: "ownerIds",
+          error: String(err?.message || err || ""),
+        });
+        throw new Error("query(): OwnerIds must be serializable");
+      }
       ownerCandidates.push(...normalizedFilters.ownerIds);
     }
     if (Array.isArray(normalizedFilters.owner_ids)) {
@@ -1438,42 +1524,60 @@ class TransactionRegistry {
   }
 
   static _createTransactionSanitizeInput(txn) {
-    const cleaned = SafeUtils.sanitizeValidate({
-      order_id: { value: txn?.order_id, type: "string", required: true },
-      amount: { value: txn?.amount, type: "float", required: true },
-      order_type: { value: txn?.order_type, type: "string", required: true },
-      customer_uid: { value: txn?.customer_uid, type: "string", required: true },
-      status: { value: txn?.status, type: "string", required: true },
-      direction: {
-        value:
-          txn?.direction ?? txn?.transaction_kind ?? txn?.transactionKind ?? null,
-        type: "string",
-        required: true,
-      },
-      payment_method: { value: txn?.payment_method, type: "string", required: true },
-      currency: { value: txn?.currency, type: "string", required: true },
-      platform: { value: txn?.platform, type: "string", required: true },
-      ip_address: { value: txn?.ip_address, type: "string", required: false },
-      parent_transaction_id: {
-        value: txn?.parent_transaction_id,
-        type: "string",
-        required: false,
-      },
-      meta: { value: txn?.meta, type: "object", required: false },
-      user_agent: { value: txn?.user_agent, type: "string", required: false },
-      refund_amount: { value: txn?.refund_amount, type: "float", required: false },
-      refund_reason: { value: txn?.refund_reason, type: "string", required: false },
-      dispute_id: { value: txn?.dispute_id, type: "string", required: false },
-      write_status: {
-        value: txn?.write_status,
-        type: "string",
-        required: false,
-        default: "confirmed",
-      },
-      owners: { value: txn?.owners, type: "array", required: true },
-      owner_allocations: { value: txn?.owner_allocations, type: "array", required: true },
-      products: { value: txn?.products, type: "array", required: true },
-    });
+    let cleaned;
+    try {
+      cleaned = SafeUtils.sanitizeValidate({
+        order_id: { value: txn?.order_id, type: "string", required: true },
+        amount: { value: txn?.amount, type: "float", required: true },
+        order_type: { value: txn?.order_type, type: "string", required: true },
+        customer_uid: { value: txn?.customer_uid, type: "string", required: true },
+        status: { value: txn?.status, type: "string", required: true },
+        direction: {
+          value:
+            txn?.direction ?? txn?.transaction_kind ?? txn?.transactionKind ?? null,
+          type: "string",
+          required: true,
+        },
+        payment_method: { value: txn?.payment_method, type: "string", required: true },
+        currency: { value: txn?.currency, type: "string", required: true },
+        platform: { value: txn?.platform, type: "string", required: true },
+        ip_address: { value: txn?.ip_address, type: "string", required: false },
+        parent_transaction_id: {
+          value: txn?.parent_transaction_id,
+          type: "string",
+          required: false,
+        },
+        meta: { value: txn?.meta, type: "object", required: false },
+        user_agent: { value: txn?.user_agent, type: "string", required: false },
+        refund_amount: { value: txn?.refund_amount, type: "float", required: false },
+        refund_reason: { value: txn?.refund_reason, type: "string", required: false },
+        dispute_id: { value: txn?.dispute_id, type: "string", required: false },
+        write_status: {
+          value: txn?.write_status,
+          type: "string",
+          required: false,
+          default: "confirmed",
+        },
+        owners: { value: txn?.owners, type: "array", required: false },
+        owner_allocations: { value: txn?.owner_allocations, type: "array", required: false },
+        products: { value: txn?.products, type: "array", required: false },
+      });
+    } catch (err) {
+      // Extract field name from error message for ErrorHandler
+      const match = String(err?.message || "").match(/Missing required parameter: (\w+)/);
+      const fieldName = match ? match[1] : null;
+      if (fieldName) {
+        ErrorHandler.addError(`createTransaction(): Missing required field "${fieldName}"`, {
+          field: fieldName,
+          error: String(err?.message || err || ""),
+        });
+      } else {
+        ErrorHandler.addError(`createTransaction(): Validation failed`, {
+          error: String(err?.message || err || ""),
+        });
+      }
+      throw err;
+    }
 
     const requiredTextFields = [
       "order_id",
@@ -1487,6 +1591,9 @@ class TransactionRegistry {
     ];
     for (const field of requiredTextFields) {
       if (!SafeUtils.hasValue(cleaned[field])) {
+        ErrorHandler.addError(`createTransaction(): Missing required field "${field}"`, {
+          field,
+        });
         throw new TypeError(`createTransaction(): "${field}" is required`);
       }
     }
@@ -1503,6 +1610,16 @@ class TransactionRegistry {
     try {
       const serialized = JSON.stringify(value);
       if (maxLength !== null && serialized.length > maxLength) {
+        // Extract field name (e.g., "meta", "owner_allocations", "products")
+        const fieldMatch = label.match(/^(\w+)/);
+        const fieldName = fieldMatch ? fieldMatch[1] : null;
+        if (fieldName) {
+          ErrorHandler.addError(`createTransaction(): ${label} exceeds maximum length`, {
+            field: fieldName,
+            maxLength,
+            actualLength: serialized.length,
+          });
+        }
         throw new TypeError(
           `${label} exceeds maximum length of ${maxLength} characters`,
         );
@@ -1516,6 +1633,17 @@ class TransactionRegistry {
           error: String(err),
         },
       );
+      // Don't add ErrorHandler if already added above for size limit
+      if (!String(err?.message || "").includes("exceeds maximum length")) {
+        const fieldMatch = label.match(/^(\w+)/);
+        const fieldName = fieldMatch ? fieldMatch[1] : null;
+        if (fieldName) {
+          ErrorHandler.addError(`createTransaction(): ${label} serialization failed`, {
+            field: fieldName,
+            error: String(err?.message || err || ""),
+          });
+        }
+      }
       throw new TypeError(`${label} must be serializable`);
     }
   }
@@ -1534,6 +1662,11 @@ class TransactionRegistry {
       if (!SafeUtils.hasValue(key)) continue;
 
       if (!this.META_KEY_PATTERN.test(key)) {
+        ErrorHandler.addError(`createTransaction(): Invalid meta key pattern`, {
+          field: "meta",
+          key,
+          pattern: String(this.META_KEY_PATTERN),
+        });
         throw new TypeError(
           `${path}.${key} must match pattern ${this.META_KEY_PATTERN}`,
         );
@@ -1582,6 +1715,9 @@ class TransactionRegistry {
   }
 
   static _createTransactionSanitizeOwnerAllocations(ownerAllocations) {
+    if (!ownerAllocations) {
+      return [];
+    }
     if (!Array.isArray(ownerAllocations)) {
       throw new TypeError("createTransaction(): owner_allocations must be an array");
     }
@@ -1606,10 +1742,18 @@ class TransactionRegistry {
   static _createTransactionNormalizeDirection(directionValue) {
     const sanitizedDirection = SafeUtils.sanitizeTextField(directionValue);
     if (!SafeUtils.hasValue(sanitizedDirection)) {
+      ErrorHandler.addError("createTransaction(): Missing direction", {
+        field: "direction",
+      });
       throw new TypeError("createTransaction(): Missing direction");
     }
     const normalized = sanitizedDirection.trim().toLowerCase();
     if (!this.TRANSACTION_DIRECTIONS.includes(normalized)) {
+      ErrorHandler.addError(`createTransaction(): invalid direction`, {
+        field: "direction",
+        value: sanitizedDirection,
+        allowed: this.TRANSACTION_DIRECTIONS,
+      });
       throw new TypeError(
         `createTransaction(): invalid direction (expected one of ${this.TRANSACTION_DIRECTIONS.join(
           ", ",

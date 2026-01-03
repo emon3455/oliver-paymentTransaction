@@ -3,9 +3,17 @@ const PostgreSQL = require('../__mocks__/PostgreSQL');
 const Logger = require('../__mocks__/Logger');
 const ErrorHandler = require('../__mocks__/ErrorHandler');
 
-jest.mock('../PostgreSQL');
-jest.mock('../Logger');
-jest.mock('../ErrorHandler');
+jest.mock('../PostgreSQL', () => {
+  return require('../__mocks__/PostgreSQL');
+});
+
+jest.mock('../Logger', () => {
+  return require('../__mocks__/Logger');
+});
+
+jest.mock('../ErrorHandler', () => {
+  return require('../__mocks__/ErrorHandler');
+});
 
 describe('TransactionRegistry - createTransaction - COMPREHENSIVE', () => {
   let mockDb;
@@ -169,9 +177,9 @@ describe('TransactionRegistry - createTransaction - COMPREHENSIVE', () => {
 
       expect(result).toBeDefined();
       const inserted = mockDb.data.transactions[0];
-      expect(inserted.ip_address).toBeUndefined();
-      expect(inserted.refund_reason).toBeUndefined();
-      expect(inserted.dispute_id).toBeUndefined();
+      expect(inserted.ip_address).toBeNull();
+      expect(inserted.refund_reason).toBeNull();
+      expect(inserted.dispute_id).toBeNull();
     });
 
     test('PASS_createTransaction_7: Direction provided via transaction_kind', async () => {
